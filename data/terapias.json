@@ -1,0 +1,82 @@
+[
+  {
+    "slug": "el-sendero-a-tu-corazon",
+    "nombre": "El Sendero a tu Corazón",
+    "destacada": true,
+    "resumen": "Terapia insignia: un espacio de escucha, sin juicios, para comprenderte, aceptarte y amarte sin trampas ni escondites.",
+    "descripcion": [
+      "Mi espacio está destinado a aquel Ser que quiera comprenderse, aceptarse y amarse sin trampas ni escondites.",
+      "Es un espacio de escucha, con apertura y sin juicios. Mis métodos te van a llevar a descubrir realmente quién sos y a entender, desde una perspectiva nueva, diferente y amorosa, la construcción de tu propia persona desde sus comienzos.",
+      "El Sendero a tu Corazón es una comunión con el sentir, con todo aquello que se guarda y no se dice. Es un camino para que transiten todos aquellos que realmente quieran ser y sentir su verdad."
+    ],
+    "precio": "Consultar valor",
+    "imagen": "images/grafico-corazon-sendero.png",
+    "imagenAlt": "Ilustración de un corazón con un sendero dorado, símbolo de la terapia"
+  },
+  {
+    "slug": "sendero-22",
+    "nombre": "Sendero 22",
+    "resumen": "Tu camino de integración y propósito.",
+    "descripcion": [
+      "Un método diseñado por Eli que abarca tu energía en el aquí y ahora. El objetivo es trabajar sobre una situación, emoción o patrón que hoy te bloquea y no te permite avanzar.",
+      "Investigamos juntas a través de tus vibraciones, tu inconsciente y los síntomas que dicha situación provoca, para que puedas profundizar en el momento actual y salir con total claridad hacia adelante."
+    ],
+    "modalidad": "Sesión online, desde la comodidad de tu casa",
+    "duracion": "2 horas de trabajo profundo",
+    "incluye": "Devolución escrita, para guardar tu proceso",
+    "precio": "$3.000 / USD 75",
+    "pago": "Prex o PayPal",
+    "imagen": "images/sendero-22.jpg",
+    "imagenAlt": "Ilustración de la terapia Sendero 22: tu camino de integración y propósito"
+  },
+  {
+    "slug": "tarot-terapeutico",
+    "nombre": "Tarot Terapéutico",
+    "resumen": "Una lectura de tarot pensada como herramienta de autoconocimiento.",
+    "descripcion": [
+      "Una lectura de tarot pensada como herramienta de autoconocimiento, para iluminar lo que hoy necesita ser visto."
+    ],
+    "precio": "Consultar valor",
+    "borrador": true
+  },
+  {
+    "slug": "coaching-numerologico",
+    "nombre": "Coaching Numerológico",
+    "resumen": "Un recorrido por tus números personales para comprender ciclos, talentos y propósito.",
+    "descripcion": [
+      "Un recorrido por tus números personales para comprender ciclos, talentos y el propósito que estás transitando."
+    ],
+    "precio": "Consultar valor",
+    "borrador": true
+  },
+  {
+    "slug": "biodescodificacion",
+    "nombre": "Biodescodificación",
+    "resumen": "Explorar la relación entre emociones no resueltas y su expresión en el cuerpo.",
+    "descripcion": [
+      "Un abordaje para explorar la relación entre emociones no resueltas y su expresión en el cuerpo."
+    ],
+    "precio": "Consultar valor",
+    "borrador": true
+  },
+  {
+    "slug": "talleres",
+    "nombre": "Talleres",
+    "resumen": "Encuentros grupales de trabajo emocional y autoconocimiento.",
+    "descripcion": [
+      "Encuentros grupales de trabajo emocional y autoconocimiento, en modalidad presencial u online."
+    ],
+    "precio": "Consultar valor",
+    "borrador": true
+  },
+  {
+    "slug": "reuniones-cumples-eventos",
+    "nombre": "Reuniones, Cumples y Eventos",
+    "resumen": "Tarot, oráculos y actividades terapéuticas para tu evento.",
+    "descripcion": [
+      "Tarot, oráculos y actividades terapéuticas para sumar un momento distinto a tu evento."
+    ],
+    "precio": "Consultar valor",
+    "borrador": true
+  }
+]

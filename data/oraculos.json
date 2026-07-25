@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "mandalas-de-fuego",
+    "nombre": "Mandalas de Fuego",
+    "resumen": "Un oráculo de mandalas para conectar con la energía del fuego.",
+    "descripcion": [
+      "Un oráculo de mandalas para conectar con la energía del fuego: transformación, fuerza y claridad interior."
+    ],
+    "precio": "$1.000",
+    "imagen": "images/mandalas-de-fuego-1.jpg",
+    "imagenAlt": "Carta del oráculo Mandalas de Fuego",
+    "galeria": [
+      "images/mandalas-de-fuego-2.jpg",
+      "images/mandalas-de-fuego-3.jpg"
+    ],
+    "borrador": true
+  },
+  {
+    "slug": "hadas-bienaventuradas",
+    "nombre": "Hadas Bienaventuradas",
+    "resumen": "Mensajes de las hadas, protectoras y guías de la naturaleza.",
+    "descripcion": [
+      "Las Hadas son seres simpáticos de cuentos, que nos han hecho imaginar y soñar con la Magia. Con cuerpecitos humanoides y sus alas de mariposas estos seres del bosque y valles nos protegen y siempre están presentes para ayudarnos de algún modo si creemos fervientemente en ellas. Protectoras, nos guían y nos traen mensajes del más allá. Portadoras de belleza, calidez, gracias y elegancia son las grandes cuidadoras de la naturaleza, aportando apoyo a la flora y a la fauna de la Madre Tierra.",
+      "De buena fortuna para algunas culturas, dando felicidad y alegría al mundo, dejándonos la ilusión de frescura, juventud y creyendo sinceramente en el gran poder de la Magia."
+    ],
+    "precio": "$1.250",
+    "imagen": "images/hadas-bienaventuradas-1.jpg",
+    "imagenAlt": "Carta del oráculo Hadas Bienaventuradas",
+    "galeria": [
+      "images/hadas-bienaventuradas-2.jpg"
+    ]
+  },
+  {
+    "slug": "primeros-pasos",
+    "nombre": "Primeros Pasos",
+    "resumen": "Mensajes sencillos para que niñas, niños y familias comprendan sus emociones.",
+    "descripcion": [
+      "Este oráculo nació de una madre que buscaba para sus hijos mensajes sencillos que los guiaran a comprender sus emociones de una manera clara, relajada y lúdica.",
+      "Para ellos, para otros niños y sus familias, llega \"Primeros Pasos\".",
+      "Desde la ternura de mi corazón, comparto esta experiencia de crecer con compasión y amor, reconociéndolos como seres semilla que hoy se nutren para convertirse en jóvenes capaces de gestionarse desde un lugar sano y consciente.",
+      "Con amor, Eli."
+    ],
+    "precio": "$1.500",
+    "imagen": "images/primeros-pasos.jpg",
+    "imagenAlt": "Carta del oráculo Primeros Pasos",
+    "galeria": [
+      "images/primeros-pasos-2.jpg"
+    ]
+  }
+]

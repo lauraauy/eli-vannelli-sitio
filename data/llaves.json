@@ -1,0 +1,51 @@
+[
+  {
+    "slug": "sendero-22",
+    "nombre": "Sendero 22",
+    "resumen": "Tu camino de integración y propósito.",
+    "descripcion": [
+      "Un método diseñado por Eli que abarca tu energía en el aquí y ahora. El objetivo es trabajar sobre una situación, emoción o patrón que hoy te bloquea y no te permite avanzar.",
+      "Investigamos juntas a través de tus vibraciones, tu inconsciente y los síntomas que dicha situación provoca, para que puedas profundizar en el momento actual y salir con total claridad hacia adelante."
+    ],
+    "modalidad": "Sesión online, desde la comodidad de tu casa",
+    "duracion": "2 horas de trabajo profundo",
+    "incluye": "Devolución escrita, para guardar tu proceso",
+    "precio": "$3.000 / USD 75",
+    "pago": "Prex o PayPal",
+    "imagen": "images/sendero-22.jpg",
+    "imagenAlt": "Ilustración de la llave Sendero 22: tu camino de integración y propósito"
+  },
+  {
+    "slug": "luz-interior",
+    "nombre": "Luz Interior",
+    "resumen": "Método de Vibración, Cristales y Geometría Sagrada para integrar lo que sentís, en vez de luchar contra eso.",
+    "descripcion": [
+      "¿Y si en lugar de luchar contra lo que sentís, lo integrás?",
+      "A veces la ansiedad, el miedo o la culpa se sienten como nudos que no sabemos cómo desatar. Te invito a una experiencia de 60 minutos para reconocer, aceptar y soltar lo que ya no necesitás cargar.",
+      "A través de la frecuencia, la aceptación y la pintura, reconocemos y aceptamos esa emoción que tanto te cuesta en tu día a día: ansiedad, tristeza, miedo, culpa, enojo.",
+      "En esta sesión vas a recibir: música de alta frecuencia para calmar tu sistema nervioso, meditación con cristales para sintonizar con la tierra, pintura terapéutica para que el inconsciente se exprese, y una guía de 10 días para tu integración emocional en casa.",
+      "No se trata de \"dejar de sentir\", sino de aprender a escuchar qué te viene a decir cada emoción. Regalate este espacio de paz y recalibración emocional."
+    ],
+    "modalidad": "Presencial",
+    "duracion": "1 hora (aprox.)",
+    "precio": "$1.800",
+    "imagen": "images/luz-interior.jpg",
+    "imagenAlt": "Método Luz Interior: integra tus emociones a través del sonido, el arte y la geometría sagrada"
+  },
+  {
+    "slug": "tarot-terapeutico",
+    "nombre": "Tarot Terapéutico",
+    "resumen": "Una lectura de tarot para que recuperes el norte y despejes tus dudas.",
+    "descripcion": [
+      "Mi lectura de Tarot Terapéutico está diseñada para que recuperes el norte y despejes tus dudas.",
+      "Panorama general: iniciamos con una bajada profunda de 10 cartas para ver cómo están tus energías hoy, qué te está bloqueando y qué puertas se están abriendo.",
+      "Dudas puntuales: luego de ese mapa inicial, tenemos espacio para responder 3 o 4 preguntas concretas sobre los temas que más te inquieten.",
+      "La sesión es un espacio de escucha y sanación que dura entre 1 hora y 1 hora y media."
+    ],
+    "modalidad": "Presencial, online o por videollamada",
+    "duracion": "Entre 1 hora y 1 hora y media",
+    "precio": "$1.500",
+    "imagen": "images/tarot-terapeutico.jpg",
+    "imagenAlt": "Cartas de tarot dispuestas para una lectura de Tarot Terapéutico"
+  }
+]

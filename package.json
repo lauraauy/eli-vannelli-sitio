@@ -1,0 +1,12 @@
+{
+  "name": "eli-vannelli-sitio",
+  "version": "1.0.0",
+  "description": "Sitio estático (generador propio en Node, sin dependencias) para el emprendimiento de terapias y oráculos de Eli Vannelli.",
+  "private": true,
+  "scripts": {
+    "build": "node build.js"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
