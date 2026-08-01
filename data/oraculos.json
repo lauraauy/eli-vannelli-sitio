@@ -10,7 +10,9 @@
     "portada": "images/portada-mandalas-de-fuego.jpg",
     "imagen": "images/mandalas-de-fuego-1.jpg",
     "imagenAlt": "Oráculo Mandalas de Fuego",
-    "galeria": ["images/mandalas-de-fuego-2.jpg"],
+    "galeria": [
+      "images/mandalas-de-fuego-2.jpg"
+    ],
     "borrador": true
   },
   {
@@ -25,26 +27,30 @@
     "portada": "images/portada-hadas-bienaventuradas.jpg",
     "imagen": "images/hadas-bienaventuradas-1.jpg",
     "imagenAlt": "Oráculo de las Hadas Bienaventuradas",
-    "galeria": ["images/hadas-bienaventuradas-2.jpg"]
+    "galeria": [
+      "images/hadas-bienaventuradas-2.jpg"
+    ]
   },
   {
     "slug": "primeros-pasos",
     "nombre": "Primeros Pasos",
     "resumen": "Mensajes sencillos para que niñas, niños y familias comprendan sus emociones.",
     "descripcion": [
-      "Este oráculo nació de una madre que buscaba para sus hijos mensajes sencillos que los guiaran a comprender sus emociones de una manera clara, relajada y lúdica.",
-      "Para ellos, para otros niños y sus familias, llega \"Primeros Pasos\".",
-      "Desde la ternura de mi corazón, comparto esta experiencia de crecer con compasión y amor, reconociéndolos como seres semilla que hoy se nutren para convertirse en jóvenes capaces de gestionarse desde un lugar sano y consciente.",
-      "Con amor, Eli."
+      "Desde lo más tierno de mi corazón, les presento: \"Primeros Pasos - Emociones\".",
+      "Este oráculo nació del deseo de una madre que buscaba para sus hijos mensajes sencillos, capaces de guiarlos a comprender sus emociones de una manera clara, relajada y lúdica. Hoy, esa intención se transforma en esta creación pensada para ellos, para otros niños y para sus familias.",
+      "¿Qué vas a encontrar en este oráculo? 20 cartas ilustradas con rimas e historias, diseñadas especialmente para aprender y comprender junto a los más chiquitos las vivencias que experimentan a medida que van creciendo. Un formato práctico y duradero, con anilla metálica y ojalillos de acero para hojearlo una y otra vez con total libertad, y una bolsita de tela artesanal para llevarlo a todas partes.",
+      "Comparto esta experiencia de crecer con compasión y amor, reconociéndolos como seres semilla que hoy se nutren para convertirse en personas capaces de gestionarse desde un lugar sano y consciente. Con amor, Eli."
     ],
-    "precio": "$1.500",
+    "precio": "$1.850",
     "portada": "images/portada-primeros-pasos.jpg",
-    "imagen": "images/portada-primeros-pasos.jpg",
-    "imagenAlt": "Oráculo Primeros Pasos, sobre emociones para niñas y niños",
+    "imagen": "images/primeros-pasos-anilla.jpg",
+    "imagenAlt": "Oráculo Primeros Pasos, con su anilla metálica, en manos de Eli",
     "galeria": [
       "images/primeros-pasos-2.jpg",
       "images/primeros-pasos-gratitud.jpg",
       "images/primeros-pasos-yo-soy.jpg"
-    ]
+    ],
+    "modalidad": "Tienda web o retiro directo (Montevideo)",
+    "incluye": "Bolsita de tela artesanal para llevarlo a todas partes"
   }
 ]
