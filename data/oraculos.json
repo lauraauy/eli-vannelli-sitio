@@ -7,12 +7,10 @@
       "Un oráculo de mandalas para conectar con la energía del fuego: transformación, fuerza y claridad interior."
     ],
     "precio": "$1.000",
+    "portada": "images/portada-mandalas-de-fuego.jpg",
     "imagen": "images/mandalas-de-fuego-1.jpg",
-    "imagenAlt": "Carta del oráculo Mandalas de Fuego",
-    "galeria": [
-      "images/mandalas-de-fuego-2.jpg",
-      "images/mandalas-de-fuego-3.jpg"
-    ],
+    "imagenAlt": "Oráculo Mandalas de Fuego",
+    "galeria": ["images/mandalas-de-fuego-2.jpg"],
     "borrador": true
   },
   {
@@ -24,11 +22,10 @@
       "De buena fortuna para algunas culturas, dando felicidad y alegría al mundo, dejándonos la ilusión de frescura, juventud y creyendo sinceramente en el gran poder de la Magia."
     ],
     "precio": "$1.250",
+    "portada": "images/portada-hadas-bienaventuradas.jpg",
     "imagen": "images/hadas-bienaventuradas-1.jpg",
-    "imagenAlt": "Carta del oráculo Hadas Bienaventuradas",
-    "galeria": [
-      "images/hadas-bienaventuradas-2.jpg"
-    ]
+    "imagenAlt": "Oráculo de las Hadas Bienaventuradas",
+    "galeria": ["images/hadas-bienaventuradas-2.jpg"]
   },
   {
     "slug": "primeros-pasos",
@@ -41,10 +38,13 @@
       "Con amor, Eli."
     ],
     "precio": "$1.500",
-    "imagen": "images/primeros-pasos.jpg",
-    "imagenAlt": "Carta del oráculo Primeros Pasos",
+    "portada": "images/portada-primeros-pasos.jpg",
+    "imagen": "images/portada-primeros-pasos.jpg",
+    "imagenAlt": "Oráculo Primeros Pasos, sobre emociones para niñas y niños",
     "galeria": [
-      "images/primeros-pasos-2.jpg"
+      "images/primeros-pasos-2.jpg",
+      "images/primeros-pasos-gratitud.jpg",
+      "images/primeros-pasos-yo-soy.jpg"
     ]
   }
 ]

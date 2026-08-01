@@ -32,6 +32,24 @@
   </nav>
 </header>
 
+<button id="cartButton" class="cart-button" aria-label="Ver carrito">
+  🛒 <span id="cartCount" class="cart-count">0</span>
+</button>
+
+<div id="cartOverlay" class="cart-overlay"></div>
+<aside id="cartDrawer" class="cart-drawer" aria-hidden="true">
+  <div class="cart-drawer-head">
+    <h3>Tu carrito</h3>
+    <button id="cartClose" class="cart-close" aria-label="Cerrar carrito">✕</button>
+  </div>
+  <div id="cartItems" class="cart-items"></div>
+  <div class="cart-drawer-foot">
+    <p class="cart-total">Total: <span id="cartTotal">$0</span></p>
+    <a id="cartCheckout" class="btn btn-primary" href="#" target="_blank" rel="noopener">Finalizar pedido por WhatsApp</a>
+    <button id="cartClear" class="cart-clear">Vaciar carrito</button>
+  </div>
+</aside>
+
 <main>
 {{CONTENT}}
 </main>
@@ -48,9 +66,15 @@
     </div>
     <p class="footer-location">{{LOCATION}}</p>
     <p class="footer-copy">© <span id="year"></span> Eli Vannelli. Todas las llaves, oráculos y textos son de creación propia.</p>
+    <p class="footer-credit">Sitio creado por <a href="{{CREATOR_URL}}" target="_blank" rel="noopener">{{CREATOR_NAME}}</a></p>
   </div>
 </footer>
 
+<script>
+  window.SITE_BASE = "{{BASE_DIR}}";
+  window.PRODUCTS = {{PRODUCTS_JSON}};
+  window.WHATSAPP_NUMBER = "{{WHATSAPP_NUMBER}}";
+</script>
 <script src="{{JS_HREF}}"></script>
 </body>
 </html>

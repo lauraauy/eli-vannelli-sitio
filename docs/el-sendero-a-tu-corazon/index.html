@@ -32,6 +32,24 @@
   </nav>
 </header>
 
+<button id="cartButton" class="cart-button" aria-label="Ver carrito">
+  🛒 <span id="cartCount" class="cart-count">0</span>
+</button>
+
+<div id="cartOverlay" class="cart-overlay"></div>
+<aside id="cartDrawer" class="cart-drawer" aria-hidden="true">
+  <div class="cart-drawer-head">
+    <h3>Tu carrito</h3>
+    <button id="cartClose" class="cart-close" aria-label="Cerrar carrito">✕</button>
+  </div>
+  <div id="cartItems" class="cart-items"></div>
+  <div class="cart-drawer-foot">
+    <p class="cart-total">Total: <span id="cartTotal">$0</span></p>
+    <a id="cartCheckout" class="btn btn-primary" href="#" target="_blank" rel="noopener">Finalizar pedido por WhatsApp</a>
+    <button id="cartClear" class="cart-clear">Vaciar carrito</button>
+  </div>
+</aside>
+
 <main>
   <section class="page-hero section-tinted">
     <div class="section-inner page-hero-inner">
@@ -45,7 +63,7 @@
   <section class="section">
     <div class="path-node" aria-hidden="true"></div>
     <div class="section-inner page-content-grid">
-      <div class="page-image"><img src="../images/grafico-corazon-sendero.png" alt="Ilustración de un corazón con un sendero dorado, símbolo del espacio terapéutico"></div>
+      <div class="page-image"><img src="../images/el-sendero-a-tu-corazon.jpg" alt="Sello de El Sendero a tu Corazón, con un corazón dorado"></div>
       <div class="page-text">
         <p>Mi espacio está destinado a aquel Ser que quiera comprenderse, aceptarse y amarse sin trampas ni escondites.</p>
 <p>Es un espacio de escucha, con apertura y sin juicios. Mis métodos te van a llevar a descubrir realmente quién sos y a entender, desde una perspectiva nueva, diferente y amorosa, la construcción de tu propia persona desde sus comienzos.</p>
@@ -65,24 +83,33 @@
       <div class="card-grid">
         
     <article class="service-card reveal">
-      <h3><a href="../llaves/sendero-22/index.html" style="text-decoration:none;color:inherit;">Sendero 22</a></h3>
-      <p>Tu camino de integración y propósito.</p>
-      <ul class="service-meta"><li>💻 Sesión online, desde la comodidad de tu casa</li><li>⌛ 2 horas de trabajo profundo</li><li>📝 Devolución escrita, para guardar tu proceso</li></ul>
-      <a class="btn btn-ghost" href="../llaves/sendero-22/index.html">Ver más</a>
+      <a href="../llaves/sendero-22/index.html" class="service-card-thumb"><img src="../images/sendero-22.jpg" alt="Ilustración de la llave Sendero 22: tu camino de integración y propósito" loading="lazy"></a>
+      <div class="service-card-body">
+        <h3><a href="../llaves/sendero-22/index.html" style="text-decoration:none;color:inherit;">Sendero 22</a></h3>
+        <p>Tu camino de integración y propósito.</p>
+        <ul class="service-meta"><li>💻 Sesión online, desde la comodidad de tu casa</li><li>⌛ 2 horas de trabajo profundo</li><li>📝 Devolución escrita, para guardar tu proceso</li></ul>
+        <a class="btn btn-ghost" href="../llaves/sendero-22/index.html">Ver más</a>
+      </div>
     </article>
 
     <article class="service-card reveal">
-      <h3><a href="../llaves/luz-interior/index.html" style="text-decoration:none;color:inherit;">Luz Interior</a></h3>
-      <p>Método de Vibración, Cristales y Geometría Sagrada para integrar lo que sentís, en vez de luchar contra eso.</p>
-      <ul class="service-meta"><li>💻 Presencial</li><li>⌛ 1 hora (aprox.)</li></ul>
-      <a class="btn btn-ghost" href="../llaves/luz-interior/index.html">Ver más</a>
+      <a href="../llaves/luz-interior/index.html" class="service-card-thumb"><img src="../images/portada-luz-interior.jpg" alt="Método Luz Interior: integra tus emociones a través del sonido, el arte y la geometría sagrada" loading="lazy"></a>
+      <div class="service-card-body">
+        <h3><a href="../llaves/luz-interior/index.html" style="text-decoration:none;color:inherit;">Luz Interior</a></h3>
+        <p>Método de Vibración, Cristales y Geometría Sagrada para integrar lo que sentís, en vez de luchar contra eso.</p>
+        <ul class="service-meta"><li>💻 Presencial</li><li>⌛ 1 hora (aprox.)</li></ul>
+        <a class="btn btn-ghost" href="../llaves/luz-interior/index.html">Ver más</a>
+      </div>
     </article>
 
     <article class="service-card reveal">
-      <h3><a href="../llaves/tarot-terapeutico/index.html" style="text-decoration:none;color:inherit;">Tarot Terapéutico</a></h3>
-      <p>Una lectura de tarot para que recuperes el norte y despejes tus dudas.</p>
-      <ul class="service-meta"><li>💻 Presencial, online o por videollamada</li><li>⌛ Entre 1 hora y 1 hora y media</li></ul>
-      <a class="btn btn-ghost" href="../llaves/tarot-terapeutico/index.html">Ver más</a>
+      <a href="../llaves/tarot-terapeutico/index.html" class="service-card-thumb"><img src="../images/tarot-terapeutico.jpg" alt="Cartas de tarot dispuestas para una lectura de Tarot Terapéutico" loading="lazy"></a>
+      <div class="service-card-body">
+        <h3><a href="../llaves/tarot-terapeutico/index.html" style="text-decoration:none;color:inherit;">Tarot Terapéutico</a></h3>
+        <p>Una lectura de tarot para que recuperes el norte y despejes tus dudas.</p>
+        <ul class="service-meta"><li>💻 Presencial, online o por videollamada</li><li>⌛ Entre 1 hora y 1 hora y media</li></ul>
+        <a class="btn btn-ghost" href="../llaves/tarot-terapeutico/index.html">Ver más</a>
+      </div>
     </article>
       </div>
     </div>
@@ -102,9 +129,15 @@
     </div>
     <p class="footer-location">Montevideo, Uruguay</p>
     <p class="footer-copy">© <span id="year"></span> Eli Vannelli. Todas las llaves, oráculos y textos son de creación propia.</p>
+    <p class="footer-credit">Sitio creado por <a href="https://github.com/TU-USUARIO/eli-vannelli-sitio" target="_blank" rel="noopener">Laura Adum</a></p>
   </div>
 </footer>
 
+<script>
+  window.SITE_BASE = "../";
+  window.PRODUCTS = [{"slug":"mandalas-de-fuego","nombre":"Mandalas de Fuego","precio":1000,"imagen":"images/portada-mandalas-de-fuego.jpg","href":"oraculos/mandalas-de-fuego/index.html"},{"slug":"hadas-bienaventuradas","nombre":"Hadas Bienaventuradas","precio":1250,"imagen":"images/portada-hadas-bienaventuradas.jpg","href":"oraculos/hadas-bienaventuradas/index.html"},{"slug":"primeros-pasos","nombre":"Primeros Pasos","precio":1500,"imagen":"images/portada-primeros-pasos.jpg","href":"oraculos/primeros-pasos/index.html"}];
+  window.WHATSAPP_NUMBER = "59893766519";
+</script>
 <script src="../js/site.js"></script>
 </body>
 </html>

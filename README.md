@@ -30,6 +30,16 @@ docs/                    → salida generada (esto es lo que se publica)
 `docs/` se sube al repo tal cual — no hace falta build en el servidor.
 GitHub Pages y Netlify sirven archivos estáticos directo desde ahí.
 
+### Carrito de compras
+
+Solo los **oráculos** (productos físicos) tienen botón "Agregar al carrito" —
+las llaves, celebraciones y el espacio insignia son servicios/sesiones y se
+coordinan directo por WhatsApp, sin pasar por el carrito. El carrito vive
+enteramente en el navegador (localStorage, sin backend ni pasarela de pago):
+al finalizar, arma un mensaje de WhatsApp con el detalle del pedido y el
+total. Su catálogo (`window.PRODUCTS`) se genera automático desde
+`data/oraculos.json` en cada build — no se edita a mano.
+
 ## Editar contenido
 
 1. Abrí el `.json` que corresponda en `data/`.
@@ -50,8 +60,10 @@ imagen todavía, dejá `imagen` sin ese campo — la página se acomoda sola a u
 columna en vez de romperse.
 
 Campos opcionales por item: `modalidad`, `duracion`, `incluye`, `pago`,
-`imagen`, `imagenAlt`, `galeria` (array de imágenes adicionales),
-`borrador: true` (marca visualmente que el texto todavía no está confirmado).
+`imagen` (foto de la página de detalle), `portada` (miniatura para las
+tarjetas de listado — si no está, se usa `imagen` también ahí), `imagenAlt`,
+`galeria` (array de imágenes adicionales), `borrador: true` (marca
+visualmente que el texto todavía no está confirmado).
 
 ### WhatsApp e Instagram/TikTok
 

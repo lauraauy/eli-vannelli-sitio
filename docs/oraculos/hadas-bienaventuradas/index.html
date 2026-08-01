@@ -32,6 +32,24 @@
   </nav>
 </header>
 
+<button id="cartButton" class="cart-button" aria-label="Ver carrito">
+  🛒 <span id="cartCount" class="cart-count">0</span>
+</button>
+
+<div id="cartOverlay" class="cart-overlay"></div>
+<aside id="cartDrawer" class="cart-drawer" aria-hidden="true">
+  <div class="cart-drawer-head">
+    <h3>Tu carrito</h3>
+    <button id="cartClose" class="cart-close" aria-label="Cerrar carrito">✕</button>
+  </div>
+  <div id="cartItems" class="cart-items"></div>
+  <div class="cart-drawer-foot">
+    <p class="cart-total">Total: <span id="cartTotal">$0</span></p>
+    <a id="cartCheckout" class="btn btn-primary" href="#" target="_blank" rel="noopener">Finalizar pedido por WhatsApp</a>
+    <button id="cartClear" class="cart-clear">Vaciar carrito</button>
+  </div>
+</aside>
+
 <main>
   <section class="page-hero section-tinted">
     <div class="section-inner page-hero-inner">
@@ -45,14 +63,14 @@
   <section class="section">
     <div class="path-node" aria-hidden="true"></div>
     <div class="section-inner page-content-grid">
-      <div class="page-image"><img src="../../images/hadas-bienaventuradas-1.jpg" alt="Carta del oráculo Hadas Bienaventuradas"><div class="page-gallery"><img src="../../images/hadas-bienaventuradas-2.jpg" alt="Hadas Bienaventuradas"></div></div>
+      <div class="page-image"><img src="../../images/hadas-bienaventuradas-1.jpg" alt="Oráculo de las Hadas Bienaventuradas"><div class="page-gallery"><img src="../../images/hadas-bienaventuradas-2.jpg" alt="Hadas Bienaventuradas"></div></div>
       <div class="page-text">
         <p>Las Hadas son seres simpáticos de cuentos, que nos han hecho imaginar y soñar con la Magia. Con cuerpecitos humanoides y sus alas de mariposas estos seres del bosque y valles nos protegen y siempre están presentes para ayudarnos de algún modo si creemos fervientemente en ellas. Protectoras, nos guían y nos traen mensajes del más allá. Portadoras de belleza, calidez, gracias y elegancia son las grandes cuidadoras de la naturaleza, aportando apoyo a la flora y a la fauna de la Madre Tierra.</p>
 <p>De buena fortuna para algunas culturas, dando felicidad y alegría al mundo, dejándonos la ilusión de frescura, juventud y creyendo sinceramente en el gran poder de la Magia.</p>
         
         <p class="service-price">$1.250</p>
         
-        <a class="btn btn-primary" href="https://wa.me/59893766519?text=Hola%20Eli!%20Quisiera%20consultar%20por%3A%20Hadas%20Bienaventuradas." target="_blank" rel="noopener">Consultar por WhatsApp</a>
+        <button class="btn btn-primary btn-add-cart" data-slug="hadas-bienaventuradas">Agregar al carrito</button>
       </div>
     </div>
   </section>
@@ -64,17 +82,23 @@
       <div class="card-grid">
         
     <article class="service-card reveal">
-      <h3><a href="../mandalas-de-fuego/index.html" style="text-decoration:none;color:inherit;">Mandalas de Fuego</a></h3>
-      <p>Un oráculo de mandalas para conectar con la energía del fuego.</p>
-      
-      <a class="btn btn-ghost" href="../mandalas-de-fuego/index.html">Ver más</a>
+      <a href="../mandalas-de-fuego/index.html" class="service-card-thumb"><img src="../../images/portada-mandalas-de-fuego.jpg" alt="Oráculo Mandalas de Fuego" loading="lazy"></a>
+      <div class="service-card-body">
+        <h3><a href="../mandalas-de-fuego/index.html" style="text-decoration:none;color:inherit;">Mandalas de Fuego</a></h3>
+        <p>Un oráculo de mandalas para conectar con la energía del fuego.</p>
+        
+        <a class="btn btn-ghost" href="../mandalas-de-fuego/index.html">Ver más</a>
+      </div>
     </article>
 
     <article class="service-card reveal">
-      <h3><a href="../primeros-pasos/index.html" style="text-decoration:none;color:inherit;">Primeros Pasos</a></h3>
-      <p>Mensajes sencillos para que niñas, niños y familias comprendan sus emociones.</p>
-      
-      <a class="btn btn-ghost" href="../primeros-pasos/index.html">Ver más</a>
+      <a href="../primeros-pasos/index.html" class="service-card-thumb"><img src="../../images/portada-primeros-pasos.jpg" alt="Oráculo Primeros Pasos, sobre emociones para niñas y niños" loading="lazy"></a>
+      <div class="service-card-body">
+        <h3><a href="../primeros-pasos/index.html" style="text-decoration:none;color:inherit;">Primeros Pasos</a></h3>
+        <p>Mensajes sencillos para que niñas, niños y familias comprendan sus emociones.</p>
+        
+        <a class="btn btn-ghost" href="../primeros-pasos/index.html">Ver más</a>
+      </div>
     </article>
       </div>
     </div>
@@ -94,9 +118,15 @@
     </div>
     <p class="footer-location">Montevideo, Uruguay</p>
     <p class="footer-copy">© <span id="year"></span> Eli Vannelli. Todas las llaves, oráculos y textos son de creación propia.</p>
+    <p class="footer-credit">Sitio creado por <a href="https://github.com/TU-USUARIO/eli-vannelli-sitio" target="_blank" rel="noopener">Laura Adum</a></p>
   </div>
 </footer>
 
+<script>
+  window.SITE_BASE = "../../";
+  window.PRODUCTS = [{"slug":"mandalas-de-fuego","nombre":"Mandalas de Fuego","precio":1000,"imagen":"images/portada-mandalas-de-fuego.jpg","href":"oraculos/mandalas-de-fuego/index.html"},{"slug":"hadas-bienaventuradas","nombre":"Hadas Bienaventuradas","precio":1250,"imagen":"images/portada-hadas-bienaventuradas.jpg","href":"oraculos/hadas-bienaventuradas/index.html"},{"slug":"primeros-pasos","nombre":"Primeros Pasos","precio":1500,"imagen":"images/portada-primeros-pasos.jpg","href":"oraculos/primeros-pasos/index.html"}];
+  window.WHATSAPP_NUMBER = "59893766519";
+</script>
 <script src="../../js/site.js"></script>
 </body>
 </html>

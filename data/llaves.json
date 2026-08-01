@@ -13,7 +13,8 @@
     "precio": "$3.000 / USD 75",
     "pago": "Prex o PayPal",
     "imagen": "images/sendero-22.jpg",
-    "imagenAlt": "Ilustración de la llave Sendero 22: tu camino de integración y propósito"
+    "imagenAlt": "Ilustración de la llave Sendero 22: tu camino de integración y propósito",
+    "portada": "images/sendero-22.jpg"
   },
   {
     "slug": "luz-interior",
@@ -30,7 +31,8 @@
     "duracion": "1 hora (aprox.)",
     "precio": "$1.800",
     "imagen": "images/luz-interior.jpg",
-    "imagenAlt": "Método Luz Interior: integra tus emociones a través del sonido, el arte y la geometría sagrada"
+    "imagenAlt": "Método Luz Interior: integra tus emociones a través del sonido, el arte y la geometría sagrada",
+    "portada": "images/portada-luz-interior.jpg"
   },
   {
     "slug": "tarot-terapeutico",
@@ -46,6 +48,7 @@
     "duracion": "Entre 1 hora y 1 hora y media",
     "precio": "$1.500",
     "imagen": "images/tarot-terapeutico.jpg",
-    "imagenAlt": "Cartas de tarot dispuestas para una lectura de Tarot Terapéutico"
+    "imagenAlt": "Cartas de tarot dispuestas para una lectura de Tarot Terapéutico",
+    "portada": "images/tarot-terapeutico.jpg"
   }
 ]

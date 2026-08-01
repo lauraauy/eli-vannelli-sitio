@@ -32,6 +32,24 @@
   </nav>
 </header>
 
+<button id="cartButton" class="cart-button" aria-label="Ver carrito">
+  🛒 <span id="cartCount" class="cart-count">0</span>
+</button>
+
+<div id="cartOverlay" class="cart-overlay"></div>
+<aside id="cartDrawer" class="cart-drawer" aria-hidden="true">
+  <div class="cart-drawer-head">
+    <h3>Tu carrito</h3>
+    <button id="cartClose" class="cart-close" aria-label="Cerrar carrito">✕</button>
+  </div>
+  <div id="cartItems" class="cart-items"></div>
+  <div class="cart-drawer-foot">
+    <p class="cart-total">Total: <span id="cartTotal">$0</span></p>
+    <a id="cartCheckout" class="btn btn-primary" href="#" target="_blank" rel="noopener">Finalizar pedido por WhatsApp</a>
+    <button id="cartClear" class="cart-clear">Vaciar carrito</button>
+  </div>
+</aside>
+
 <main>
   <section class="page-hero section-tinted">
     <div class="section-inner page-hero-inner">
@@ -48,12 +66,15 @@
       <div class="card-grid">
         
     <article class="service-card reveal">
-      <h3><a href="celebrando-tu-vida/index.html" style="text-decoration:none;color:inherit;">Celebrando tu Vida: Ceremonia de Gratitud</a></h3>
-      <p>Un cumpleaños diferente, una experiencia inolvidable: transformá tu festejo en un ritual de conexión.</p>
-      <ul class="service-meta"><li>⌛ 2 horas aproximadamente, de pura magia, fluidez y emoción</li><li>📝 Velas individuales, marcadores, hilos sagrados, cristales para el altar y los mazos de cartas</li></ul>
-      <p class="service-price">$6.000 (grupo de hasta 10 personas, en Montevideo) · $350 por invitado adicional desde la persona 11</p>
-       <p class="service-pago">Pagos: BROU, Prex o efectivo. Se reserva señando el 50%, y el saldo se abona el día de la Celebración</p>
-       <a class="btn btn-primary" href="https://wa.me/59893766519?text=Hola%20Eli!%20Quisiera%20consultar%20por%3A%20Celebrando%20tu%20Vida%3A%20Ceremonia%20de%20Gratitud." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+      <a href="celebrando-tu-vida/index.html" class="service-card-thumb"><img src="../images/celebrando-tu-vida.jpg" alt="Altar con mandala de madera y una vela encendida, para la ceremonia Celebrando tu Vida" loading="lazy"></a>
+      <div class="service-card-body">
+        <h3><a href="celebrando-tu-vida/index.html" style="text-decoration:none;color:inherit;">Celebrando tu Vida: Ceremonia de Gratitud</a></h3>
+        <p>Un cumpleaños diferente, una experiencia inolvidable: transformá tu festejo en un ritual de conexión.</p>
+        <ul class="service-meta"><li>⌛ 2 horas aproximadamente, de pura magia, fluidez y emoción</li><li>📝 Velas individuales, marcadores, hilos sagrados, cristales para el altar y los mazos de cartas</li></ul>
+        <p class="service-price">$6.000 (grupo de hasta 10 personas, en Montevideo) · $350 por invitado adicional desde la persona 11</p>
+      <p class="service-pago">Pagos: BROU, Prex o efectivo. Se reserva señando el 50%, y el saldo se abona el día de la Celebración</p>
+      <a class="btn btn-primary" href="https://wa.me/59893766519?text=Hola%20Eli!%20Quisiera%20consultar%20por%3A%20Celebrando%20tu%20Vida%3A%20Ceremonia%20de%20Gratitud." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+      </div>
     </article>
       </div>
       
@@ -74,9 +95,15 @@
     </div>
     <p class="footer-location">Montevideo, Uruguay</p>
     <p class="footer-copy">© <span id="year"></span> Eli Vannelli. Todas las llaves, oráculos y textos son de creación propia.</p>
+    <p class="footer-credit">Sitio creado por <a href="https://github.com/TU-USUARIO/eli-vannelli-sitio" target="_blank" rel="noopener">Laura Adum</a></p>
   </div>
 </footer>
 
+<script>
+  window.SITE_BASE = "../";
+  window.PRODUCTS = [{"slug":"mandalas-de-fuego","nombre":"Mandalas de Fuego","precio":1000,"imagen":"images/portada-mandalas-de-fuego.jpg","href":"oraculos/mandalas-de-fuego/index.html"},{"slug":"hadas-bienaventuradas","nombre":"Hadas Bienaventuradas","precio":1250,"imagen":"images/portada-hadas-bienaventuradas.jpg","href":"oraculos/hadas-bienaventuradas/index.html"},{"slug":"primeros-pasos","nombre":"Primeros Pasos","precio":1500,"imagen":"images/portada-primeros-pasos.jpg","href":"oraculos/primeros-pasos/index.html"}];
+  window.WHATSAPP_NUMBER = "59893766519";
+</script>
 <script src="../js/site.js"></script>
 </body>
 </html>

@@ -16,6 +16,10 @@
  *
  * Editar contenido = editar los .json en /data y volver a correr `node build.js`.
  * No hace falta tocar HTML a mano.
+ *
+ * Carrito: solo los oráculos (productos físicos) tienen botón "Agregar al
+ * carrito". Llaves, celebraciones y el espacio insignia son servicios/
+ * sesiones y se coordinan directo por WhatsApp, sin pasar por el carrito.
  */
 
 const fs = require("fs");
@@ -55,6 +59,12 @@ function relTo(fromFile, toFileAbs) {
   let rel = path.relative(path.dirname(fromFile), toFileAbs);
   return rel.split(path.sep).join("/");
 }
+// convierte "$1.250" -> 1250 (formato uruguayo, punto de miles)
+function numericPrice(precioStr) {
+  if (!precioStr) return 0;
+  const digits = String(precioStr).replace(/[^\d]/g, "");
+  return digits ? parseInt(digits, 10) : 0;
+}
 
 // ---------- datos ----------
 
@@ -73,6 +83,7 @@ const COLLECTIONS = {
     bajada: "Herramientas integrativas para abrir el camino hacia tu interior.",
     emptyMsg: "Muy pronto vas a encontrar acá más llaves.",
     otrosTitulo: "Otras llaves",
+    cta: "whatsapp",
   },
   celebraciones: {
     items: celebraciones,
@@ -82,6 +93,7 @@ const COLLECTIONS = {
     bajada: "Encuentros grupales y ceremonias para celebrar la vida en compañía de tu tribu.",
     emptyMsg: "Muy pronto vas a encontrar acá más celebraciones.",
     otrosTitulo: "Otras celebraciones",
+    cta: "whatsapp",
   },
   oraculos: {
     items: oraculos,
@@ -91,6 +103,7 @@ const COLLECTIONS = {
     bajada: "Cada oráculo nace de un proceso propio de canalización, pensado para acompañar momentos concretos del camino de quien consulta.",
     emptyMsg: "Muy pronto vas a encontrar acá los oráculos propios de Eli.",
     otrosTitulo: "Otros oráculos",
+    cta: "cart",
   },
 };
 
@@ -129,43 +142,76 @@ function imageBlock(item, outFile) {
   return { html, gridClass: "" };
 }
 
+// catálogo global de productos (solo oráculos) para el carrito, inyectado en cada página
+const PRODUCTS_CATALOG = oraculos.map((o) => ({
+  slug: o.slug,
+  nombre: o.nombre,
+  precio: numericPrice(o.precio),
+  imagen: o.portada || o.imagen || "",
+  href: `oraculos/${o.slug}/index.html`,
+}));
+
 function renderPage(outFile, { title, description, content }) {
+  const homeHref = relTo(outFile, path.join(DIST, "index.html"));
+  const baseDir = homeHref === "index.html" ? "" : homeHref.replace(/index\.html$/, "");
   const html = fill(baseTpl, {
     TITLE: title,
     DESCRIPTION: description,
     CSS_HREF: relTo(outFile, path.join(DIST, "css/style.css")),
     JS_HREF: relTo(outFile, path.join(DIST, "js/site.js")),
-    HOME_HREF: relTo(outFile, path.join(DIST, "index.html")),
-    SOBREMI_HREF: relTo(outFile, path.join(DIST, "index.html")) + "#sobre-mi",
+    HOME_HREF: homeHref,
+    BASE_DIR: baseDir,
+    PRODUCTS_JSON: JSON.stringify(PRODUCTS_CATALOG),
+    WHATSAPP_NUMBER: config.whatsappNumber,
+    SOBREMI_HREF: homeHref + "#sobre-mi",
     LLAVES_HREF: relTo(outFile, path.join(DIST, "llaves/index.html")),
     CELEBRACIONES_HREF: relTo(outFile, path.join(DIST, "celebraciones/index.html")),
     ORACULOS_HREF: relTo(outFile, path.join(DIST, "oraculos/index.html")),
-    TIENDA_HREF: relTo(outFile, path.join(DIST, "index.html")) + "#tienda",
-    AGENDA_HREF: relTo(outFile, path.join(DIST, "index.html")) + "#agenda",
+    TIENDA_HREF: homeHref + "#tienda",
+    AGENDA_HREF: homeHref + "#agenda",
     INSTAGRAM_URL: config.instagram,
     INSTAGRAM_HANDLE: config.instagramHandle,
     TIKTOK_URL: config.tiktok,
     TIKTOK_HANDLE: config.tiktokHandle,
     WHATSAPP_FOOTER_URL: whatsappUrl("Hola Eli! Quisiera hacerte una consulta."),
     LOCATION: config.location,
+    CREATOR_NAME: config.creatorName,
+    CREATOR_URL: config.creatorUrl,
     CONTENT: content,
   });
   writeFile(outFile, html);
 }
 
-function serviceCard(item, outFile, { withPrice = false, detailDir }) {
+// CTA de una tarjeta/página: "link" (Ver más), "whatsapp" (precio + WhatsApp)
+// o "cart" (precio + agregar al carrito, solo productos físicos)
+function ctaHtml(item, { mode, detailHref }) {
+  if (mode === "cart") {
+    return `<p class="service-price">${item.precio}</p>
+      <button class="btn btn-primary btn-add-cart" data-slug="${item.slug}">Agregar al carrito</button>`;
+  }
+  if (mode === "whatsapp") {
+    return `<p class="service-price">${item.precio}</p>
+      ${item.pago ? `<p class="service-pago">Pagos: ${item.pago}</p>` : ""}
+      <a class="btn btn-primary" href="${whatsappUrl(`Hola Eli! Quisiera consultar por: ${item.nombre}.`)}" target="_blank" rel="noopener">Pedir por WhatsApp</a>`;
+  }
+  return `<a class="btn btn-ghost" href="${detailHref}">Ver más</a>`;
+}
+
+function serviceCard(item, outFile, { mode = "link", detailDir }) {
   const detailHref = relTo(outFile, path.join(DIST, detailDir, item.slug, "index.html"));
-  const priceBlock = withPrice
-    ? `<p class="service-price">${item.precio}</p>
-       ${item.pago ? `<p class="service-pago">Pagos: ${item.pago}</p>` : ""}
-       <a class="btn btn-primary" href="${whatsappUrl(`Hola Eli! Quisiera consultar por: ${item.nombre}.`)}" target="_blank" rel="noopener">Pedir por WhatsApp</a>`
-    : `<a class="btn btn-ghost" href="${detailHref}">Ver más</a>`;
+  const thumbSrc = item.portada || item.imagen;
+  const thumb = thumbSrc
+    ? `<a href="${detailHref}" class="service-card-thumb"><img src="${relTo(outFile, path.join(DIST, thumbSrc))}" alt="${item.imagenAlt || item.nombre}" loading="lazy"></a>`
+    : "";
   return `
     <article class="service-card reveal">
-      <h3><a href="${detailHref}" style="text-decoration:none;color:inherit;">${item.nombre}</a></h3>
-      <p>${item.resumen}</p>
-      ${metaHtml(item)}
-      ${priceBlock}
+      ${thumb}
+      <div class="service-card-body">
+        <h3><a href="${detailHref}" style="text-decoration:none;color:inherit;">${item.nombre}</a></h3>
+        <p>${item.resumen}</p>
+        ${metaHtml(item)}
+        ${ctaHtml(item, { mode, detailHref })}
+      </div>
     </article>`;
 }
 
@@ -176,7 +222,12 @@ function buildDetailPages(key) {
     const img = imageBlock(item, outFile);
 
     const otros = coll.items.filter((x) => x.slug !== item.slug);
-    const otrosCards = otros.map((x) => serviceCard(x, outFile, { withPrice: false, detailDir: key })).join("\n");
+    const otrosCards = otros.map((x) => serviceCard(x, outFile, { mode: "link", detailDir: key })).join("\n");
+
+    const cta =
+      coll.cta === "cart"
+        ? `<button class="btn btn-primary btn-add-cart" data-slug="${item.slug}">Agregar al carrito</button>`
+        : `<a class="btn btn-primary" href="${whatsappUrl(`Hola Eli! Quisiera consultar por: ${item.nombre}.`)}" target="_blank" rel="noopener">Consultar por WhatsApp</a>`;
 
     const content = fill(detailContentTpl, {
       BACK_HREF: relTo(outFile, path.join(DIST, key, "index.html")),
@@ -190,7 +241,7 @@ function buildDetailPages(key) {
       META_HTML: metaHtml(item),
       PRECIO: item.precio || "Consultar valor",
       PAGO_LINE: item.pago ? `<p class="service-pago">Pagos: ${item.pago}</p>` : "",
-      WHATSAPP_URL: whatsappUrl(`Hola Eli! Quisiera consultar por: ${item.nombre}.`),
+      CTA_HTML: cta,
       OTROS_TITULO: coll.otrosTitulo,
       OTROS_CARDS: otrosCards || `<p style="text-align:center;">Muy pronto vas a encontrar más acá.</p>`,
     });
@@ -202,7 +253,7 @@ function buildDetailPages(key) {
 function buildListingPage(key) {
   const coll = COLLECTIONS[key];
   const outFile = path.join(DIST, key, "index.html");
-  const cards = coll.items.map((item) => serviceCard(item, outFile, { withPrice: true, detailDir: key })).join("\n");
+  const cards = coll.items.map((item) => serviceCard(item, outFile, { mode: coll.cta, detailDir: key })).join("\n");
   const emptyState = coll.items.length ? "" : `<div class="empty-state"><p>${coll.emptyMsg}</p></div>`;
 
   const content = fill(listingContentTpl, {
@@ -220,7 +271,7 @@ function buildListingPage(key) {
 function buildFlagshipPage() {
   const outFile = path.join(DIST, flagship.slug, "index.html");
   const img = imageBlock(flagship, outFile);
-  const llavesCards = llaves.map((x) => serviceCard(x, outFile, { withPrice: false, detailDir: "llaves" })).join("\n");
+  const llavesCards = llaves.map((x) => serviceCard(x, outFile, { mode: "link", detailDir: "llaves" })).join("\n");
 
   const content = fill(detailContentTpl, {
     BACK_HREF: relTo(outFile, path.join(DIST, "index.html")),
@@ -234,7 +285,7 @@ function buildFlagshipPage() {
     META_HTML: metaHtml(flagship),
     PRECIO: flagship.precio || "Consultar valor",
     PAGO_LINE: flagship.pago ? `<p class="service-pago">Pagos: ${flagship.pago}</p>` : "",
-    WHATSAPP_URL: whatsappUrl(`Hola Eli! Quisiera consultar por: ${flagship.nombre}.`),
+    CTA_HTML: `<a class="btn btn-primary" href="${whatsappUrl(`Hola Eli! Quisiera consultar por: ${flagship.nombre}.`)}" target="_blank" rel="noopener">Consultar por WhatsApp</a>`,
     OTROS_TITULO: "Las llaves de este espacio",
     OTROS_CARDS: llavesCards,
   });
@@ -245,22 +296,18 @@ function buildFlagshipPage() {
 function buildHome() {
   const outFile = path.join(DIST, "index.html");
 
-  const llavesCards = llaves.map((t) => serviceCard(t, outFile, { withPrice: false, detailDir: "llaves" })).join("\n");
-  const celebracionesCards = celebraciones.map((c) => serviceCard(c, outFile, { withPrice: false, detailDir: "celebraciones" })).join("\n");
-  const oraculosCards = oraculos.map((o) => serviceCard(o, outFile, { withPrice: false, detailDir: "oraculos" })).join("\n");
+  const llavesCards = llaves.map((t) => serviceCard(t, outFile, { mode: "link", detailDir: "llaves" })).join("\n");
+  const celebracionesCards = celebraciones.map((c) => serviceCard(c, outFile, { mode: "link", detailDir: "celebraciones" })).join("\n");
+  const oraculosCards = oraculos.map((o) => serviceCard(o, outFile, { mode: "link", detailDir: "oraculos" })).join("\n");
   const oraculosEmpty = oraculos.length ? "" : `<div class="empty-state"><p>${COLLECTIONS.oraculos.emptyMsg}</p></div>`;
 
-  const tiendaCards = [
-    serviceCard(flagship, outFile, { withPrice: true, detailDir: "" }),
-    ...llaves.map((t) => serviceCard(t, outFile, { withPrice: true, detailDir: "llaves" })),
-    ...celebraciones.map((c) => serviceCard(c, outFile, { withPrice: true, detailDir: "celebraciones" })),
-    ...oraculos.map((o) => serviceCard(o, outFile, { withPrice: true, detailDir: "oraculos" })),
-  ].join("\n");
+  // Tienda: solo productos físicos (oráculos), con carrito
+  const tiendaCards = oraculos.map((o) => serviceCard(o, outFile, { mode: "cart", detailDir: "oraculos" })).join("\n");
 
   const content = fill(indexContentTpl, {
     IMG_HERO: relTo(outFile, path.join(DIST, "images/hero-eli.jpg")),
     IMG_RETRATO: relTo(outFile, path.join(DIST, "images/eli-retrato.jpg")),
-    IMG_FLAGSHIP: relTo(outFile, path.join(DIST, flagship.imagen)),
+    IMG_FLAGSHIP: relTo(outFile, path.join(DIST, flagship.portada || flagship.imagen)),
     FLAGSHIP_IMG_ALT: flagship.imagenAlt || flagship.nombre,
     FLAGSHIP_NOMBRE: flagship.nombre,
     FLAGSHIP_DESCRIPCION_HTML: descripcionHtml(flagship),
@@ -297,7 +344,7 @@ function build() {
   }
 
   const total = llaves.length + celebraciones.length + oraculos.length;
-  console.log(`Listo. Generadas ${llaves.length} llaves, ${celebraciones.length} celebraciones y ${oraculos.length} oráculos (+1 espacio insignia) en /docs.`);
+  console.log(`Listo. Generadas ${llaves.length} llaves, ${celebraciones.length} celebraciones y ${oraculos.length} oráculos (+1 espacio insignia) en /docs. Carrito con ${PRODUCTS_CATALOG.length} productos.`);
 }
 
 build();
