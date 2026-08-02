@@ -190,9 +190,12 @@ function ctaHtml(item, { mode, detailHref }) {
       <button class="btn btn-primary btn-add-cart" data-slug="${item.slug}">Agregar al carrito</button>`;
   }
   if (mode === "whatsapp") {
+    const calBtn = item.calLink
+      ? `<a class="btn btn-ghost" href="${item.calLink}" target="_blank" rel="noopener">Reservar turno</a>`
+      : "";
     return `<p class="service-price">${item.precio}</p>
       ${item.pago ? `<p class="service-pago">Pagos: ${item.pago}</p>` : ""}
-      <a class="btn btn-primary" href="${whatsappUrl(`Hola Eli! Quisiera consultar por: ${item.nombre}.`)}" target="_blank" rel="noopener">Pedir por WhatsApp</a>`;
+      <div class="cta-row"><a class="btn btn-primary" href="${whatsappUrl(`Hola Eli! Quisiera consultar por: ${item.nombre}.`)}" target="_blank" rel="noopener">Pedir por WhatsApp</a>${calBtn}</div>`;
   }
   return `<a class="btn btn-ghost" href="${detailHref}">Ver más</a>`;
 }
@@ -224,10 +227,14 @@ function buildDetailPages(key) {
     const otros = coll.items.filter((x) => x.slug !== item.slug);
     const otrosCards = otros.map((x) => serviceCard(x, outFile, { mode: "link", detailDir: key })).join("\n");
 
+    const whatsappBtn = `<a class="btn btn-primary" href="${whatsappUrl(`Hola Eli! Quisiera consultar por: ${item.nombre}.`)}" target="_blank" rel="noopener">Consultar por WhatsApp</a>`;
+    const calBtn = item.calLink
+      ? `<a class="btn btn-ghost" href="${item.calLink}" target="_blank" rel="noopener">Reservar turno</a>`
+      : "";
     const cta =
       coll.cta === "cart"
         ? `<button class="btn btn-primary btn-add-cart" data-slug="${item.slug}">Agregar al carrito</button>`
-        : `<a class="btn btn-primary" href="${whatsappUrl(`Hola Eli! Quisiera consultar por: ${item.nombre}.`)}" target="_blank" rel="noopener">Consultar por WhatsApp</a>`;
+        : `<div class="cta-row">${whatsappBtn}${calBtn}</div>`;
 
     const content = fill(detailContentTpl, {
       BACK_HREF: relTo(outFile, path.join(DIST, key, "index.html")),
@@ -304,6 +311,20 @@ function buildHome() {
   // Tienda: solo productos físicos (oráculos), con carrito
   const tiendaCards = oraculos.map((o) => serviceCard(o, outFile, { mode: "cart", detailDir: "oraculos" })).join("\n");
 
+  const agendaItems = [...llaves, ...celebraciones].filter((x) => x.calLink);
+  const agendaLinks = agendaItems
+    .map(
+      (x) => `
+      <a class="agenda-option" href="${x.calLink}" target="_blank" rel="noopener">
+        <span>
+          <span class="agenda-option-name">${x.nombre}</span>
+          <span class="agenda-option-meta">${x.duracion || ""}</span>
+        </span>
+        <span class="agenda-option-cta">Reservar →</span>
+      </a>`
+    )
+    .join("\n");
+
   const content = fill(indexContentTpl, {
     IMG_HERO: relTo(outFile, path.join(DIST, "images/hero-eli.jpg")),
     IMG_RETRATO: relTo(outFile, path.join(DIST, "images/eli-retrato.jpg")),
@@ -318,6 +339,7 @@ function buildHome() {
     CELEBRACIONES_CARDS: celebracionesCards,
     ORACULOS_CARDS: oraculosCards + oraculosEmpty,
     TIENDA_CARDS: tiendaCards,
+    AGENDA_LINKS: agendaLinks,
     WHATSAPP_AGENDA_URL: whatsappUrl("Hola Eli! Quisiera coordinar una sesión contigo."),
   });
 

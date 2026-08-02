@@ -121,13 +121,13 @@ lleguen a esa parte.
    actualizada (o conectás el repo de GitHub desde Netlify para que se
    despliegue solo en cada push — te lo configuro si preferís esa opción).
 
-## Agenda (Cal.com — gratis)
+## Agenda (Cal.com)
 
-1. Crear cuenta gratis en https://cal.com y conectar el Google Calendar de Eli.
-2. Crear un "Event type" por tipo de sesión.
-3. Copiar el link público (`cal.com/eli-vannelli`, por ejemplo).
-4. Reemplazar el link de ejemplo en `templates/index-content.html`, en la
-   sección `#agenda`, y correr `node build.js` de nuevo.
+Ya está conectada. Cada llave y la celebración tienen su link de Cal.com en
+el campo `calLink` dentro de `data/llaves.json` y `data/celebraciones.json`
+— aparecen como botón "Reservar turno" en su página y en la sección Agenda
+del home. Para sumar un link a un ítem nuevo, agregale ese campo con la URL
+del tipo de evento en Cal.com y corré `node build.js`.
 
 ## Pendiente / a confirmar con Eli
 
