@@ -65,6 +65,14 @@ function numericPrice(precioStr) {
   const digits = String(precioStr).replace(/[^\d]/g, "");
   return digits ? parseInt(digits, 10) : 0;
 }
+// título con ícono fusionado: "🔑 Llave Sendero 22" / "🕯️ Celebración Gratitud"
+// (usa shortName si el item lo tiene, para no repetir nombres largos)
+function displayTitle(item, key) {
+  const label = item.shortName || item.nombre;
+  if (key === "llaves") return `🔑 Llave ${label}`;
+  if (key === "celebraciones") return `🕯️ Celebración ${label}`;
+  return item.nombre;
+}
 
 // ---------- datos ----------
 
@@ -77,7 +85,8 @@ const oraculos = readJSON(path.join(ROOT, "data/oraculos.json"));
 const COLLECTIONS = {
   llaves: {
     items: llaves,
-    kicker: "Llave",
+    kicker: "", // el ícono + "Llave" ahora va fusionado en el propio título (ver displayTitle)
+    sectionEyebrow: "🔑 Llaves",
     backLabel: "Todas las llaves",
     titulo: "Las Llaves",
     bajada: "Herramientas integrativas para abrir el camino hacia tu interior.",
@@ -87,7 +96,8 @@ const COLLECTIONS = {
   },
   celebraciones: {
     items: celebraciones,
-    kicker: "Celebración",
+    kicker: "",
+    sectionEyebrow: "🕯️ Celebraciones",
     backLabel: "Todas las celebraciones",
     titulo: "Rituales para marcar tus momentos",
     bajada: "Encuentros grupales y ceremonias para celebrar la vida en compañía de tu tribu.",
@@ -98,6 +108,7 @@ const COLLECTIONS = {
   oraculos: {
     items: oraculos,
     kicker: "Oráculo",
+    sectionEyebrow: "🔮 Oráculos",
     backLabel: "Todos los oráculos",
     titulo: "Cartas canalizadas para iluminar tu camino",
     bajada: "Cada oráculo nace de un proceso propio de canalización, pensado para acompañar momentos concretos del camino de quien consulta.",
@@ -128,6 +139,10 @@ function metaHtml(item) {
 function descripcionHtml(item) {
   const draft = item.borrador ? `<p class="draft-note">Texto a confirmar con Eli</p>` : "";
   return draft + item.descripcion.map((p) => `<p>${p}</p>`).join("\n");
+}
+
+function kickerHtml(text) {
+  return text ? `<p class="eyebrow">${text}</p>` : "";
 }
 
 function imageBlock(item, outFile) {
@@ -210,7 +225,7 @@ function serviceCard(item, outFile, { mode = "link", detailDir }) {
     <article class="service-card reveal">
       ${thumb}
       <div class="service-card-body">
-        <h3><a href="${detailHref}" style="text-decoration:none;color:inherit;">${item.nombre}</a></h3>
+        <h3><a href="${detailHref}" style="text-decoration:none;color:inherit;">${displayTitle(item, detailDir)}</a></h3>
         <p>${item.resumen}</p>
         ${metaHtml(item)}
         ${ctaHtml(item, { mode, detailHref })}
@@ -239,8 +254,8 @@ function buildDetailPages(key) {
     const content = fill(detailContentTpl, {
       BACK_HREF: relTo(outFile, path.join(DIST, key, "index.html")),
       BACK_LABEL: coll.backLabel,
-      KICKER: coll.kicker,
-      NOMBRE: item.nombre,
+      KICKER_HTML: kickerHtml(coll.kicker),
+      NOMBRE: displayTitle(item, key),
       RESUMEN: item.resumen,
       IMAGE_BLOCK: img.html,
       GRID_CLASS: img.gridClass,
@@ -265,7 +280,7 @@ function buildListingPage(key) {
 
   const content = fill(listingContentTpl, {
     BACK_HREF: relTo(outFile, path.join(DIST, "index.html")),
-    KICKER: coll.titulo,
+    KICKER: coll.sectionEyebrow,
     TITULO: coll.titulo,
     BAJADA: coll.bajada,
     CARDS: cards,
@@ -283,7 +298,7 @@ function buildFlagshipPage() {
   const content = fill(detailContentTpl, {
     BACK_HREF: relTo(outFile, path.join(DIST, "index.html")),
     BACK_LABEL: "Inicio",
-    KICKER: "Espacio insignia",
+    KICKER_HTML: kickerHtml(""),
     NOMBRE: flagship.nombre,
     RESUMEN: flagship.resumen,
     IMAGE_BLOCK: img.html,
@@ -336,9 +351,13 @@ function buildHome() {
     LLAVES_HREF: relTo(outFile, path.join(DIST, "llaves/index.html")),
     AGENDA_HREF: "#agenda",
     LLAVES_CARDS: llavesCards,
+    LLAVES_EYEBROW: COLLECTIONS.llaves.sectionEyebrow,
     CELEBRACIONES_CARDS: celebracionesCards,
+    CELEBRACIONES_EYEBROW: COLLECTIONS.celebraciones.sectionEyebrow,
     ORACULOS_CARDS: oraculosCards + oraculosEmpty,
+    ORACULOS_EYEBROW: COLLECTIONS.oraculos.sectionEyebrow,
     TIENDA_CARDS: tiendaCards,
+    TIENDA_EYEBROW: "🛒 Tienda",
     AGENDA_LINKS: agendaLinks,
     WHATSAPP_AGENDA_URL: whatsappUrl("Hola Eli! Quisiera coordinar una sesión contigo."),
   });

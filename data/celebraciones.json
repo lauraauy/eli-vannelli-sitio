@@ -16,6 +16,26 @@
     "imagen": "images/celebrando-tu-vida.jpg",
     "imagenAlt": "Altar con mandala de madera y una vela encendida, para la ceremonia Celebrando tu Vida",
     "portada": "images/celebrando-tu-vida.jpg",
-    "calLink": "https://cal.com/elina-vannelli/sesion-celebracion-120-minutos"
+    "calLink": "https://cal.com/elina-vannelli/sesion-celebracion-120-minutos",
+    "shortName": "Gratitud"
+  },
+  {
+    "slug": "tarot-en-tu-evento",
+    "nombre": "Tarot en tu Evento o Reunión",
+    "shortName": "Tarot en tu Evento",
+    "resumen": "Un espacio íntimo para vos y tus invitados donde las cartas iluminan el presente.",
+    "descripcion": [
+      "Un espacio íntimo para vos y tus invitados donde las cartas iluminan el presente. Regalá una experiencia de conexión y mensajes con sentido para acompañar a cada invitado en su aquí y ahora."
+    ],
+    "duracion": "3 horas de servicio",
+    "incluye": "Lecturas individuales para tus invitados, ambientación con cristales y elementos terapéuticos, y traslado",
+    "precio": "$6.500",
+    "calLink": "https://cal.com/elina-vannelli/sesion-tarot-fiesta-180-minutos",
+    "portada": "images/tarot-en-tu-evento.jpg",
+    "imagen": "images/tarot-en-tu-evento.jpg",
+    "imagenAlt": "Mesa con cartas de tarot y cristales, con una celebración de fondo",
+    "galeria": [
+      "images/tarot-en-tu-evento-2.jpg"
+    ]
   }
 ]
