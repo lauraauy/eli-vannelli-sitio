@@ -65,12 +65,21 @@ function numericPrice(precioStr) {
   const digits = String(precioStr).replace(/[^\d]/g, "");
   return digits ? parseInt(digits, 10) : 0;
 }
+// Íconos propios en línea (reemplazan los emojis genéricos por algo acorde
+// a la identidad visual: llave antigua, copas para celebraciones, cartas de
+// tarot para oráculos — nada de bola de cristal ni velita de emoji).
+const ICONS = {
+  llave: `<svg class="icon-inline" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="7" r="4.3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 4.2v1.4M7 8.4v1.4M4.2 7h1.4M8.4 7h1.4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="10" y1="10" x2="19.3" y2="19.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M14.5 14.5l2-2M17 17l2-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`,
+  celebracion: `<svg class="icon-inline" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3 L9 3 L7.2 8 C7.2 9 6.6 9.6 5.6 9.6 C4.6 9.6 4 9 4 8 Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><line x1="5.6" y1="9.6" x2="5.6" y2="15" stroke="currentColor" stroke-width="1.3"/><line x1="3.8" y1="15" x2="7.4" y2="15" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><g transform="rotate(18 16 9)"><path d="M13 3 L18 3 L16.2 8 C16.2 9 15.6 9.6 14.6 9.6 C13.6 9.6 13 9 13 8 Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><line x1="14.6" y1="9.6" x2="14.6" y2="15" stroke="currentColor" stroke-width="1.3"/><line x1="12.8" y1="15" x2="16.4" y2="15" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></g></svg>`,
+  oraculo: `<svg class="icon-inline" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="11" height="16" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3" transform="rotate(-8 8.5 13)"/><rect x="10" y="5" width="11" height="16" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3" transform="rotate(8 15.5 13)"/><circle cx="15.5" cy="13" r="2.2" fill="none" stroke="currentColor" stroke-width="1.1" transform="rotate(8 15.5 13)"/></svg>`,
+};
+
 // título con ícono fusionado: "🔑 Llave Sendero 22" / "🕯️ Celebración Gratitud"
 // (usa shortName si el item lo tiene, para no repetir nombres largos)
 function displayTitle(item, key) {
   const label = item.shortName || item.nombre;
-  if (key === "llaves") return `🔑 Llave ${label}`;
-  if (key === "celebraciones") return `🕯️ Celebración ${label}`;
+  if (key === "llaves") return `${ICONS.llave} Llave ${label}`;
+  if (key === "celebraciones") return `${ICONS.celebracion} Celebración ${label}`;
   return item.nombre;
 }
 
@@ -86,7 +95,7 @@ const COLLECTIONS = {
   llaves: {
     items: llaves,
     kicker: "", // el ícono + "Llave" ahora va fusionado en el propio título (ver displayTitle)
-    sectionEyebrow: "🔑 Llaves",
+    sectionEyebrow: ICONS.llave + " Llaves",
     backLabel: "Todas las llaves",
     titulo: "Las Llaves",
     bajada: "Herramientas integrativas para abrir el camino hacia tu interior.",
@@ -97,7 +106,7 @@ const COLLECTIONS = {
   celebraciones: {
     items: celebraciones,
     kicker: "",
-    sectionEyebrow: "🕯️ Celebraciones",
+    sectionEyebrow: ICONS.celebracion + " Celebraciones",
     backLabel: "Todas las celebraciones",
     titulo: "Rituales para marcar tus momentos",
     bajada: "Encuentros grupales y ceremonias para celebrar la vida en compañía de tu tribu.",
@@ -108,7 +117,7 @@ const COLLECTIONS = {
   oraculos: {
     items: oraculos,
     kicker: "Oráculo",
-    sectionEyebrow: "🔮 Oráculos",
+    sectionEyebrow: ICONS.oraculo + " Oráculos",
     backLabel: "Todos los oráculos",
     titulo: "Cartas canalizadas para iluminar tu camino",
     bajada: "Cada oráculo nace de un proceso propio de canalización, pensado para acompañar momentos concretos del camino de quien consulta.",

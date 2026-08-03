@@ -630,3 +630,17 @@ p{ margin: 0 0 1em; color: var(--ink-soft); }
 .agenda-option-name{ font-family: var(--font-display); color: var(--green-deep); font-size: 1.05rem; }
 .agenda-option-meta{ display: block; font-size: 0.82rem; color: var(--ink-soft); margin-top: 0.15rem; }
 .agenda-option-cta{ font-weight: 600; color: var(--gold); white-space: nowrap; }
+
+/* ============================================
+   ÍCONOS EN LÍNEA (llave, celebración, oráculo)
+   ============================================ */
+.icon-inline{
+  width: 0.85em;
+  height: 0.85em;
+  display: inline-block;
+  vertical-align: -0.1em;
+  color: currentColor;
+  margin-right: 0.15em;
+}
+.eyebrow .icon-inline{ width: 1em; height: 1em; vertical-align: -0.15em; }
+h1 .icon-inline, h3 .icon-inline{ color: var(--gold); }
