@@ -71,7 +71,8 @@ function numericPrice(precioStr) {
 const ICONS = {
   llave: `<svg class="icon-inline" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="7" r="4.3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 4.2v1.4M7 8.4v1.4M4.2 7h1.4M8.4 7h1.4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="10" y1="10" x2="19.3" y2="19.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M14.5 14.5l2-2M17 17l2-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`,
   celebracion: `<svg class="icon-inline" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3 L9 3 L7.2 8 C7.2 9 6.6 9.6 5.6 9.6 C4.6 9.6 4 9 4 8 Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><line x1="5.6" y1="9.6" x2="5.6" y2="15" stroke="currentColor" stroke-width="1.3"/><line x1="3.8" y1="15" x2="7.4" y2="15" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><g transform="rotate(18 16 9)"><path d="M13 3 L18 3 L16.2 8 C16.2 9 15.6 9.6 14.6 9.6 C13.6 9.6 13 9 13 8 Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><line x1="14.6" y1="9.6" x2="14.6" y2="15" stroke="currentColor" stroke-width="1.3"/><line x1="12.8" y1="15" x2="16.4" y2="15" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></g></svg>`,
-  oraculo: `<svg class="icon-inline" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="11" height="16" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3" transform="rotate(-8 8.5 13)"/><rect x="10" y="5" width="11" height="16" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3" transform="rotate(8 15.5 13)"/><circle cx="15.5" cy="13" r="2.2" fill="none" stroke="currentColor" stroke-width="1.1" transform="rotate(8 15.5 13)"/></svg>`,
+  oraculo: `<svg class="icon-inline" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="11" height="16" rx="1.5" fill="currentColor" fill-opacity="0.16" stroke="currentColor" stroke-width="1.3" transform="rotate(-8 8.5 13)"/><rect x="10" y="5" width="11" height="16" rx="1.5" fill="currentColor" fill-opacity="0.16" stroke="currentColor" stroke-width="1.3" transform="rotate(8 15.5 13)"/><circle cx="15.5" cy="13" r="2.2" fill="none" stroke="currentColor" stroke-width="1.1" transform="rotate(8 15.5 13)"/></svg>`,
+  carrito: `<svg class="icon-inline" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12.2c-.05.9-.8 1.6-1.7 1.6H8.7c-.9 0-1.65-.7-1.7-1.6L6 8Z" fill="currentColor" fill-opacity="0.16" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9 8V6.3a3 3 0 0 1 6 0V8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>`,
 };
 
 // título con ícono fusionado: "🔑 Llave Sendero 22" / "🕯️ Celebración Gratitud"
@@ -201,6 +202,7 @@ function renderPage(outFile, { title, description, content }) {
     LOCATION: config.location,
     CREATOR_NAME: config.creatorName,
     CREATOR_URL: config.creatorUrl,
+    CART_ICON: ICONS.carrito,
     CONTENT: content,
   });
   writeFile(outFile, html);
@@ -366,7 +368,7 @@ function buildHome() {
     ORACULOS_CARDS: oraculosCards + oraculosEmpty,
     ORACULOS_EYEBROW: COLLECTIONS.oraculos.sectionEyebrow,
     TIENDA_CARDS: tiendaCards,
-    TIENDA_EYEBROW: "🛒 Tienda",
+    TIENDA_EYEBROW: ICONS.carrito + " Tienda",
     AGENDA_LINKS: agendaLinks,
     WHATSAPP_AGENDA_URL: whatsappUrl("Hola Eli! Quisiera coordinar una sesión contigo."),
   });
