@@ -249,7 +249,7 @@ p{ margin: 0 0 1em; color: var(--ink-soft); }
   width: 2px;
   background: repeating-linear-gradient(to bottom, var(--gold) 0 8px, transparent 8px 16px);
   opacity: 0.5;
-  z-index: 1;
+  z-index: -1;
 }
 .section:last-of-type::before{ display:none; }
 
