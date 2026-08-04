@@ -648,7 +648,7 @@ h1 .icon-inline, h3 .icon-inline{ color: var(--gold); }
    atraviese; el color coincide con el fondo real,
    así que no se nota como "caja", solo tapa la línea.
    ============================================ */
-.about-text, .flagship-text, .page-text, .page-hero-inner, .hero-content, .agenda-text{
+.about-text, .flagship-text, .page-text, .page-hero-inner, .hero-content, .agenda-text, .section-header-text{
   position: relative;
   z-index: 1;
   background: var(--bg);
@@ -658,9 +658,11 @@ h1 .icon-inline, h3 .icon-inline{ color: var(--gold); }
 .section-tinted .flagship-text,
 .section-tinted .page-text,
 .section-tinted .agenda-text,
+.section-tinted .section-header-text,
 .page-hero-inner{
   background: var(--bg-tint);
 }
+.section-header-text{ padding: 0.3rem 0 0.8rem; }
 
 /* ============================================
    LÍNEA CENTRAL — una sola, continua para toda la
