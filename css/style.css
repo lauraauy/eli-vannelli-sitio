@@ -681,3 +681,47 @@ main{ position: relative; z-index: 0; }
   z-index: -1;
   pointer-events: none;
 }
+
+/* ============================================
+   TESTIMONIOS
+   ============================================ */
+.testimonios-list{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.8rem;
+  padding-top: 1rem;
+}
+.testimonial-card{
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  box-shadow: 0 10px 26px rgba(60,90,72,0.09);
+  display: flex;
+  flex-direction: column;
+}
+.testimonial-card .icon-inline{
+  width: 1.8rem;
+  height: 1.8rem;
+  color: var(--gold-light);
+  margin-bottom: 0.6rem;
+}
+.testimonial-text{
+  font-style: italic;
+  color: var(--ink);
+  font-size: 0.96rem;
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+.testimonial-name{
+  font-family: var(--font-script);
+  font-size: 1.4rem;
+  color: var(--gold);
+  margin: 0;
+}
+.testimonial-ref{
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--green-mid);
+  text-decoration: underline;
+}

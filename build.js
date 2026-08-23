@@ -73,6 +73,7 @@ const ICONS = {
   celebracion: `<svg class="icon-inline" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3 L9 3 L7.2 8 C7.2 9 6.6 9.6 5.6 9.6 C4.6 9.6 4 9 4 8 Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><line x1="5.6" y1="9.6" x2="5.6" y2="15" stroke="currentColor" stroke-width="1.3"/><line x1="3.8" y1="15" x2="7.4" y2="15" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><g transform="rotate(18 16 9)"><path d="M13 3 L18 3 L16.2 8 C16.2 9 15.6 9.6 14.6 9.6 C13.6 9.6 13 9 13 8 Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><line x1="14.6" y1="9.6" x2="14.6" y2="15" stroke="currentColor" stroke-width="1.3"/><line x1="12.8" y1="15" x2="16.4" y2="15" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></g></svg>`,
   oraculo: `<svg class="icon-inline" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="11" height="16" rx="1.5" fill="#FBF9EC" stroke="currentColor" stroke-width="1.3" transform="rotate(-8 8.5 13)"/><rect x="10" y="5" width="11" height="16" rx="1.5" fill="#FBF9EC" stroke="currentColor" stroke-width="1.3" transform="rotate(8 15.5 13)"/><circle cx="15.5" cy="13" r="2.2" fill="none" stroke="currentColor" stroke-width="1.1" transform="rotate(8 15.5 13)"/></svg>`,
   carrito: `<svg class="icon-inline" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.3 4.2h2l.9 2.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 6.5h14.5l-2 7.3c-.2.8-.95 1.3-1.75 1.3H9.6c-.8 0-1.5-.5-1.7-1.3L6 6.5Z" fill="currentColor" fill-opacity="0.16" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="10" cy="19.8" r="1.3" fill="currentColor"/><circle cx="16.5" cy="19.8" r="1.3" fill="currentColor"/></svg>`,
+  testimonio: `<svg class="icon-inline" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8c-1.5 1.6-2 3.3-2 5 0 2.2 1.5 3.6 3.4 3.6 1.7 0 3-1.3 3-3 0-1.6-1.1-2.8-2.6-2.9.2-1 .8-2 1.9-2.9L5 8Z" fill="currentColor" fill-opacity="0.16" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M14 8c-1.5 1.6-2 3.3-2 5 0 2.2 1.5 3.6 3.4 3.6 1.7 0 3-1.3 3-3 0-1.6-1.1-2.8-2.6-2.9.2-1 .8-2 1.9-2.9L14 8Z" fill="currentColor" fill-opacity="0.16" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>`,
 };
 
 // título con ícono fusionado: "🔑 Llave Sendero 22" / "🕯️ Celebración Gratitud"
@@ -91,6 +92,7 @@ const flagship = readJSON(path.join(ROOT, "data/flagship.json"));
 const llaves = readJSON(path.join(ROOT, "data/llaves.json"));
 const celebraciones = readJSON(path.join(ROOT, "data/celebraciones.json"));
 const oraculos = readJSON(path.join(ROOT, "data/oraculos.json"));
+const testimonios = readJSON(path.join(ROOT, "data/testimonios.json"));
 
 const COLLECTIONS = {
   llaves: {
@@ -326,6 +328,28 @@ function buildFlagshipPage() {
   renderPage(outFile, { title: `${flagship.nombre} — Eli Vannelli`, description: flagship.resumen, content });
 }
 
+function findItemBySlug(slug) {
+  for (const [key, items] of [["llaves", llaves], ["celebraciones", celebraciones], ["oraculos", oraculos]]) {
+    const item = items.find((x) => x.slug === slug);
+    if (item) return { item, key };
+  }
+  return null;
+}
+
+function testimonialCard(t, outFile) {
+  const ref = t.sobre ? findItemBySlug(t.sobre) : null;
+  const refLink = ref
+    ? `<a class="testimonial-ref" href="${relTo(outFile, path.join(DIST, ref.key, ref.item.slug, "index.html"))}">Sobre: ${ref.item.shortName || ref.item.nombre}</a>`
+    : "";
+  return `
+    <article class="testimonial-card reveal">
+      ${ICONS.testimonio}
+      <p class="testimonial-text">${t.texto}</p>
+      <p class="testimonial-name">${t.nombre}</p>
+      ${refLink}
+    </article>`;
+}
+
 function buildHome() {
   const outFile = path.join(DIST, "index.html");
 
@@ -333,6 +357,7 @@ function buildHome() {
   const celebracionesCards = celebraciones.map((c) => serviceCard(c, outFile, { mode: "link", detailDir: "celebraciones" })).join("\n");
   const oraculosCards = oraculos.map((o) => serviceCard(o, outFile, { mode: "link", detailDir: "oraculos" })).join("\n");
   const oraculosEmpty = oraculos.length ? "" : `<div class="empty-state"><p>${COLLECTIONS.oraculos.emptyMsg}</p></div>`;
+  const testimoniosCards = testimonios.map((t) => testimonialCard(t, outFile)).join("\n");
 
   // Tienda: solo productos físicos (oráculos), con carrito
   const tiendaCards = oraculos.map((o) => serviceCard(o, outFile, { mode: "cart", detailDir: "oraculos" })).join("\n");
@@ -369,6 +394,8 @@ function buildHome() {
     ORACULOS_EYEBROW: COLLECTIONS.oraculos.sectionEyebrow,
     TIENDA_CARDS: tiendaCards,
     TIENDA_EYEBROW: ICONS.carrito + " Tienda",
+    TESTIMONIOS_CARDS: testimoniosCards,
+    TESTIMONIOS_EYEBROW: ICONS.testimonio + " Testimonios",
     AGENDA_LINKS: agendaLinks,
     WHATSAPP_AGENDA_URL: whatsappUrl("Hola Eli! Quisiera coordinar una sesión contigo."),
   });

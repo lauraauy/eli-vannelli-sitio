@@ -53,5 +53,55 @@
     "imagenAlt": "Cartas de tarot dispuestas para una lectura de Tarot Terapéutico",
     "portada": "images/portada-tarot-terapeutico.jpg",
     "calLink": "https://cal.com/elina-vannelli/sesion-tarot-terapeutico-90-minutos"
+  },
+  {
+    "slug": "lectura-tu-mundo",
+    "nombre": "Lectura Tu Mundo",
+    "resumen": "Una mirada integral y profunda de tu presente, a través de una tirada de 16 cartas en formato mandala.",
+    "descripcion": [
+      "Una mirada integral y profunda de tu presente. A través de una tirada de 16 cartas en formato mandala, realizamos una auténtica radiografía de tu energía en el aquí y ahora.",
+      "¿Qué exploramos en esta sesión? Tu Centro (la energía principal que te habita hoy), tus 4 Centros de Vida (plano emocional, mental, material y creativo-pasional, para detectar creencias, bloqueos y patrones repetitivos), las Energías de la Corte (dónde apoyarte con fuerza y qué conductas conviene evitar), y tu Inconsciente (los aspectos ocultos que influyen en tus decisiones diarias).",
+      "Una sesión diseñada para aclararte el panorama, revelarte exactamente dónde estás parada y darte el mapa que necesitás para dar tu próximo paso con certeza."
+    ],
+    "modalidad": "Sesión online o presencial a coordinar",
+    "duracion": "1 hora y media aprox.",
+    "precio": "$1.800",
+    "calLink": "https://cal.com/elina-vannelli/sesion-tarot-terapeutico-90-minutos",
+    "portada": "images/lectura-tu-mundo.jpg",
+    "imagen": "images/lectura-tu-mundo.jpg",
+    "imagenAlt": "Lectura Tu Mundo: globo de cristal con cartas de tarot en abanico"
+  },
+  {
+    "slug": "lectura-vincular",
+    "nombre": "Lectura Vincular Terapéutica",
+    "resumen": "¿Cómo te estás vinculando con lo que te rodea? Una mirada terapéutica sobre tus vínculos.",
+    "descripcion": [
+      "¿Cómo te estás vinculando con lo que te rodea? Tendemos a pensar que hablar de \"vínculos\" es hablar únicamente de la pareja, pero la verdad es que todo en tu vida es un vínculo.",
+      "Una Lectura Vincular Terapéutica no busca predecir si algo \"va a funcionar o no\", sino mostrarte la dinámica invisible que hay en el medio. Un espacio focalizado para observar las creencias, las resistencias y las fortalezas, permitiéndote entender, ordenar y transformar la forma en que te relacionás con lo que te importa — sea un vínculo humano, profesional o material."
+    ],
+    "modalidad": "Sesión online o presencial a coordinar",
+    "duracion": "30 minutos",
+    "precio": "$800",
+    "portada": "images/lectura-vincular.jpg",
+    "imagen": "images/lectura-vincular.jpg",
+    "imagenAlt": "Lectura Vincular Terapéutica: cartas de tarot con velas y cristales"
+  },
+  {
+    "slug": "sesion-integral",
+    "nombre": "Sesión Integral: Tu Mundo + Vínculos",
+    "shortName": "Tu Mundo + Vínculos",
+    "resumen": "La mirada más completa e integradora de tu presente: combina la Lectura Tu Mundo con un abordaje profundo de la Lectura Vincular.",
+    "descripcion": [
+      "La mirada más completa e integradora de tu presente. Esta experiencia combina la Lectura Tu Mundo (mandala de 16 cartas) con un abordaje profundo y focalizado de la Lectura Vincular.",
+      "En una sola sesión nos sumergimos primero en la radiografía 360° de tu vida — tu energía central, tus planos emocional, mental, material y creativo, tus fuerzas de apoyo y tu inconsciente — para luego hacer zoom directo en la dinámica, creencias y resistencias de ese vínculo clave (pareja, trabajo, proyecto o aspecto material) que hoy necesitás ordenar y transformar.",
+      "Ideal si querés entender el panorama completo de tu vida y desglosar un vínculo específico en detalle, o si buscás un espacio extendido de escucha, claridad y orden terapéutico, sin quedarte con ganas de profundizar en nada."
+    ],
+    "modalidad": "Sesión online o presencial a coordinar",
+    "duracion": "2 a 2:30 horas aprox.",
+    "precio": "$3.000",
+    "calLink": "https://cal.com/elina-vannelli/sesion-sendero-22-120-minutos",
+    "portada": "images/sesion-integral.jpg",
+    "imagen": "images/sesion-integral.jpg",
+    "imagenAlt": "Sesión Integral Tu Mundo + Vínculos: globo de cristal con símbolo yin yang"
   }
 ]
