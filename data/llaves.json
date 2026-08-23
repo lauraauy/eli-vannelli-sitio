@@ -84,7 +84,8 @@
     "precio": "$800",
     "portada": "images/lectura-vincular.jpg",
     "imagen": "images/lectura-vincular.jpg",
-    "imagenAlt": "Lectura Vincular Terapéutica: cartas de tarot con velas y cristales"
+    "imagenAlt": "Lectura Vincular Terapéutica: cartas de tarot con velas y cristales",
+    "calLink": "https://cal.com/elina-vannelli/30min"
   },
   {
     "slug": "sesion-integral",

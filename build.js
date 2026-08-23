@@ -195,6 +195,7 @@ function renderPage(outFile, { title, description, content }) {
     CELEBRACIONES_HREF: relTo(outFile, path.join(DIST, "celebraciones/index.html")),
     ORACULOS_HREF: relTo(outFile, path.join(DIST, "oraculos/index.html")),
     TIENDA_HREF: homeHref + "#tienda",
+    TESTIMONIOS_HREF: homeHref + "#testimonios",
     AGENDA_HREF: homeHref + "#agenda",
     INSTAGRAM_URL: config.instagram,
     INSTAGRAM_HANDLE: config.instagramHandle,
