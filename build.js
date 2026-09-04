@@ -216,6 +216,7 @@ function renderPage(outFile, { title, description, content }) {
 function ctaHtml(item, { mode, detailHref }) {
   if (mode === "cart") {
     return `<p class="service-price">${item.precio}</p>
+      ${item.pago ? `<p class="service-pago">Pagos: ${item.pago}</p>` : ""}
       <button class="btn btn-primary btn-add-cart" data-slug="${item.slug}">Agregar al carrito</button>`;
   }
   if (mode === "whatsapp") {

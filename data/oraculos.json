@@ -7,13 +7,14 @@
       "Este trabajo es el resultado de la unión de dos mujeres guerreras, enérgicas y canalizadoras.",
       "Este oráculo de 15 cartas transmite en conjunto sus dos mundos, transportándonos a través de los colores, formas y palabras a lo más profundo de sus corazones."
     ],
-    "precio": "$1.000",
+    "precio": "$1.000 / USD 35",
     "portada": "images/portada-mandalas-de-fuego.jpg",
     "imagen": "images/mandalas-de-fuego-1.jpg",
     "imagenAlt": "Oráculo Mandalas de Fuego",
     "galeria": [
       "images/mandalas-de-fuego-2.jpg"
-    ]
+    ],
+    "pago": "Prex (Uruguay) o PayPal (exterior)"
   },
   {
     "slug": "hadas-bienaventuradas",
@@ -23,13 +24,14 @@
       "Las Hadas son seres simpáticos de cuentos, que nos han hecho imaginar y soñar con la Magia. Con cuerpecitos humanoides y sus alas de mariposas estos seres del bosque y valles nos protegen y siempre están presentes para ayudarnos de algún modo si creemos fervientemente en ellas. Protectoras, nos guían y nos traen mensajes del más allá. Portadoras de belleza, calidez, gracias y elegancia son las grandes cuidadoras de la naturaleza, aportando apoyo a la flora y a la fauna de la Madre Tierra.",
       "De buena fortuna para algunas culturas, dando felicidad y alegría al mundo, dejándonos la ilusión de frescura, juventud y creyendo sinceramente en el gran poder de la Magia."
     ],
-    "precio": "$1.250",
+    "precio": "$1.250 / USD 40",
     "portada": "images/portada-hadas-bienaventuradas.jpg",
     "imagen": "images/hadas-bienaventuradas-1.jpg",
     "imagenAlt": "Oráculo de las Hadas Bienaventuradas",
     "galeria": [
       "images/hadas-bienaventuradas-2.jpg"
-    ]
+    ],
+    "pago": "Prex (Uruguay) o PayPal (exterior)"
   },
   {
     "slug": "primeros-pasos",
@@ -41,7 +43,7 @@
       "¿Qué vas a encontrar en este oráculo? 20 cartas ilustradas con rimas e historias, diseñadas especialmente para aprender y comprender junto a los más chiquitos las vivencias que experimentan a medida que van creciendo. Un formato práctico y duradero, con anilla metálica y ojalillos de acero para hojearlo una y otra vez con total libertad, y una bolsita de tela artesanal para llevarlo a todas partes.",
       "Comparto esta experiencia de crecer con compasión y amor, reconociéndolos como seres semilla que hoy se nutren para convertirse en personas capaces de gestionarse desde un lugar sano y consciente. Con amor, Eli."
     ],
-    "precio": "$1.850",
+    "precio": "$1.850 / USD 60",
     "portada": "images/portada-primeros-pasos.jpg",
     "imagen": "images/primeros-pasos-anilla.jpg",
     "imagenAlt": "Oráculo Primeros Pasos, con su anilla metálica, en manos de Eli",
@@ -51,6 +53,7 @@
       "images/primeros-pasos-yo-soy.jpg"
     ],
     "modalidad": "Tienda web o retiro directo (Montevideo)",
-    "incluye": "Bolsita de tela artesanal para llevarlo a todas partes"
+    "incluye": "Bolsita de tela artesanal para llevarlo a todas partes",
+    "pago": "Prex (Uruguay) o PayPal (exterior)"
   }
 ]

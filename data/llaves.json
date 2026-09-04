@@ -10,8 +10,8 @@
     "modalidad": "Sesión online, desde la comodidad de tu casa",
     "duracion": "2 horas de trabajo profundo",
     "incluye": "Devolución escrita, para guardar tu proceso",
-    "precio": "$3.000 / USD 75",
-    "pago": "Prex o PayPal",
+    "precio": "$3.000 / USD 85",
+    "pago": "Prex (Uruguay) o PayPal (exterior)",
     "imagen": "images/sendero-22.jpg",
     "imagenAlt": "Ilustración de la llave Sendero 22: tu camino de integración y propósito",
     "portada": "images/sendero-22.jpg",
@@ -34,11 +34,12 @@
     "imagen": "images/luz-interior.jpg",
     "imagenAlt": "Método Luz Interior: integra tus emociones a través del sonido, el arte y la geometría sagrada",
     "portada": "images/portada-luz-interior.jpg",
-    "calLink": "https://cal.com/elina-vannelli/sesion-individual-60-min"
+    "calLink": "https://cal.com/elina-vannelli/sesion-individual-60-min",
+    "pago": "Prex (Uruguay) o PayPal (exterior)"
   },
   {
     "slug": "tarot-terapeutico",
-    "nombre": "Tarot Terapéutico",
+    "nombre": "Tarot",
     "resumen": "Una lectura de tarot para que recuperes el norte y despejes tus dudas.",
     "descripcion": [
       "Mi lectura de Tarot Terapéutico está diseñada para que recuperes el norte y despejes tus dudas.",
@@ -48,11 +49,12 @@
     ],
     "modalidad": "Presencial, online o por videollamada",
     "duracion": "Entre 1 hora y 1 hora y media",
-    "precio": "$1.500",
+    "precio": "$1.500 / USD 50",
     "imagen": "images/tarot-terapeutico.jpg",
     "imagenAlt": "Cartas de tarot dispuestas para una lectura de Tarot Terapéutico",
     "portada": "images/portada-tarot-terapeutico.jpg",
-    "calLink": "https://cal.com/elina-vannelli/sesion-tarot-terapeutico-90-minutos"
+    "calLink": "https://cal.com/elina-vannelli/sesion-tarot-terapeutico-90-minutos",
+    "pago": "Prex (Uruguay) o PayPal (exterior)"
   },
   {
     "slug": "lectura-tu-mundo",
@@ -65,11 +67,12 @@
     ],
     "modalidad": "Sesión online o presencial a coordinar",
     "duracion": "1 hora y media aprox.",
-    "precio": "$1.800",
+    "precio": "$1.800 / USD 50",
     "calLink": "https://cal.com/elina-vannelli/sesion-tarot-terapeutico-90-minutos",
     "portada": "images/lectura-tu-mundo.jpg",
     "imagen": "images/lectura-tu-mundo.jpg",
-    "imagenAlt": "Lectura Tu Mundo: globo de cristal con cartas de tarot en abanico"
+    "imagenAlt": "Lectura Tu Mundo: globo de cristal con cartas de tarot en abanico",
+    "pago": "Prex (Uruguay) o PayPal (exterior)"
   },
   {
     "slug": "lectura-vincular",
@@ -81,11 +84,12 @@
     ],
     "modalidad": "Sesión online o presencial a coordinar",
     "duracion": "30 minutos",
-    "precio": "$800",
+    "precio": "$800 / USD 30",
     "portada": "images/lectura-vincular.jpg",
     "imagen": "images/lectura-vincular.jpg",
     "imagenAlt": "Lectura Vincular Terapéutica: cartas de tarot con velas y cristales",
-    "calLink": "https://cal.com/elina-vannelli/30min"
+    "calLink": "https://cal.com/elina-vannelli/30min",
+    "pago": "Prex (Uruguay) o PayPal (exterior)"
   },
   {
     "slug": "sesion-integral",
@@ -99,10 +103,11 @@
     ],
     "modalidad": "Sesión online o presencial a coordinar",
     "duracion": "2 a 2:30 horas aprox.",
-    "precio": "$3.000",
+    "precio": "$3.000 / USD 85",
     "calLink": "https://cal.com/elina-vannelli/sesion-sendero-22-120-minutos",
     "portada": "images/sesion-integral.jpg",
     "imagen": "images/sesion-integral.jpg",
-    "imagenAlt": "Sesión Integral Tu Mundo + Vínculos: globo de cristal con símbolo yin yang"
+    "imagenAlt": "Sesión Integral Tu Mundo + Vínculos: globo de cristal con símbolo yin yang",
+    "pago": "Prex (Uruguay) o PayPal (exterior)"
   }
 ]
