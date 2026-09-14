@@ -129,7 +129,59 @@ el campo `calLink` dentro de `data/llaves.json` y `data/celebraciones.json`
 del home. Para sumar un link a un ítem nuevo, agregale ese campo con la URL
 del tipo de evento en Cal.com y corré `node build.js`.
 
-## Pendiente / a confirmar con Eli
+## Sumar un testimonio (sin tocar código)
+
+Abrí `data/testimonios.txt` con cualquier editor de texto. Es una lista de
+bloques separados por una línea que dice `===`. Para sumar uno nuevo, copiá
+este bloque al final del archivo y completalo:
+
+```
+Nombre: (el nombre de la persona)
+Sobre: (opcional — el nombre de una llave, celebración u oráculo, tal cual
+       aparece en el sitio, ej. "Sendero 22" o "Lectura Tu Mundo". Si no
+       aplica, borrá esta línea entera)
+Foto: (opcional — el nombre del archivo si le subiste una foto a esa
+      persona a la carpeta images/, ej. andrea.jpg. Si no tiene, borrá
+      esta línea)
+Texto: (el mensaje de la persona, puede ocupar varias líneas)
+
+===
+```
+
+No hace falta ningún signo especial (nada de comillas, comas ni llaves —
+eso era lo que podía romperse editando el `.json` a mano). Guardá el
+archivo y corré:
+
+```
+node build.js
+```
+
+Con eso ya se regeneró `docs/` con el testimonio nuevo adentro. Después,
+los mismos cuatro comandos de git de siempre (`add`, `commit`, `pull`, `push`).
+
+**Para que esto funcione sin pedirme nada**, necesitás tener Node
+instalado en tu computadora (lo más probable es que ya lo tengas, porque
+es lo mismo que usás para correr los comandos de git — si `node build.js`
+te tira "command not found", avisame y lo instalamos juntas, es rápido).
+
+### Sumarle una foto a un testimonio
+
+1. Poné el archivo de imagen directo en la carpeta `images/` (no hace
+   falta ninguna subcarpeta especial).
+2. En el bloque de esa persona en `testimonios.txt`, agregá la línea
+   `Foto: nombre-del-archivo.jpg` (el nombre exacto del archivo que
+   pusiste en el paso 1).
+3. `node build.js` y los comandos de git de siempre.
+
+### Reemplazar una foto que ya existe en el sitio
+
+Esto también lo podés hacer siempre vos sola, sin pedírmelo: si guardás
+un archivo nuevo con el **mismo nombre exacto** que uno que ya está en
+`images/` (por ejemplo, volver a guardar `tarot-terapeutico.jpg`
+pisando el que ya existe), `node build.js` copia automáticamente la
+versión nueva a `docs/images/` — no hace falta tocar esa carpeta a mano.
+Antes estabas reemplazando el archivo pero sin correr `node build.js`,
+por eso `docs/` se quedaba con la foto vieja aunque hicieras el push.
 
 - **Mandalas de Fuego**: la descripción del oráculo (`data/oraculos.json`,
   campo `descripcion`) la redacté yo a partir de las fotos del mazo —

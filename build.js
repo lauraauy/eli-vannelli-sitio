@@ -92,7 +92,39 @@ const flagship = readJSON(path.join(ROOT, "data/flagship.json"));
 const llaves = readJSON(path.join(ROOT, "data/llaves.json"));
 const celebraciones = readJSON(path.join(ROOT, "data/celebraciones.json"));
 const oraculos = readJSON(path.join(ROOT, "data/oraculos.json"));
-const testimonios = readJSON(path.join(ROOT, "data/testimonios.json"));
+const testimonios = readTestimoniosTxt(path.join(ROOT, "data/testimonios.txt"));
+
+// Lee testimonios.txt: bloques separados por una línea "===", cada uno con
+// líneas "Nombre:", "Sobre:" (opcional) y "Texto:" (el resto del bloque).
+// Pensado para que se pueda sumar un testimonio nuevo copiando el formato,
+// sin tocar JSON ni el resto del código.
+function readTestimoniosTxt(p) {
+  if (!fs.existsSync(p)) return [];
+  const raw = fs.readFileSync(p, "utf8");
+  const blocks = raw.split(/\n\s*===\s*\n/);
+  const items = [];
+  for (const block of blocks) {
+    const lines = block.split("\n");
+    let nombre = "", sobre = "", foto = "", texto = [];
+    let modo = null;
+    for (const line of lines) {
+      const mNombre = line.match(/^\s*Nombre:\s*(.*)$/i);
+      const mSobre = line.match(/^\s*Sobre:\s*(.*)$/i);
+      const mFoto = line.match(/^\s*Foto:\s*(.*)$/i);
+      const mTexto = line.match(/^\s*Texto:\s*(.*)$/i);
+      if (mNombre) { nombre = mNombre[1].trim(); modo = null; }
+      else if (mSobre) { sobre = mSobre[1].trim(); modo = null; }
+      else if (mFoto) { foto = mFoto[1].trim(); modo = null; }
+      else if (mTexto) { texto.push(mTexto[1]); modo = "texto"; }
+      else if (modo === "texto" && line.trim()) { texto.push(line); }
+    }
+    const textoFinal = texto.join(" ").trim();
+    if (nombre && textoFinal) {
+      items.push({ nombre, texto: textoFinal, sobre: sobre || null, foto: foto || null });
+    }
+  }
+  return items;
+}
 
 const COLLECTIONS = {
   llaves: {
@@ -330,21 +362,35 @@ function buildFlagshipPage() {
   renderPage(outFile, { title: `${flagship.nombre} — Eli Vannelli`, description: flagship.resumen, content });
 }
 
-function findItemBySlug(slug) {
+function normalizar(s) {
+  return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+}
+
+function findItemByNameOrSlug(query) {
+  const q = normalizar(query);
   for (const [key, items] of [["llaves", llaves], ["celebraciones", celebraciones], ["oraculos", oraculos]]) {
-    const item = items.find((x) => x.slug === slug);
+    const item = items.find(
+      (x) =>
+        x.slug === query ||
+        normalizar(x.nombre) === q ||
+        (x.shortName && normalizar(x.shortName) === q)
+    );
     if (item) return { item, key };
   }
   return null;
 }
 
 function testimonialCard(t, outFile) {
-  const ref = t.sobre ? findItemBySlug(t.sobre) : null;
+  const ref = t.sobre ? findItemByNameOrSlug(t.sobre) : null;
   const refLink = ref
     ? `<a class="testimonial-ref" href="${relTo(outFile, path.join(DIST, ref.key, ref.item.slug, "index.html"))}">Sobre: ${ref.item.shortName || ref.item.nombre}</a>`
     : "";
+  const fotoHtml = t.foto
+    ? `<img class="testimonial-photo" src="${relTo(outFile, path.join(DIST, "images", t.foto))}" alt="Captura del mensaje de ${t.nombre}">`
+    : "";
   return `
     <article class="testimonial-card reveal">
+      ${fotoHtml}
       ${ICONS.testimonio}
       <p class="testimonial-text">${t.texto}</p>
       <p class="testimonial-name">${t.nombre}</p>
